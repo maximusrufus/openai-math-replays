@@ -58,7 +58,7 @@ python -m venv .venv && . .venv/bin/activate && pip install -r replays/wall_d2/r
 On Windows use `.venv\Scripts\activate`. The run takes roughly 10 to 50 seconds on one core, depending on the machine.
 Exit code 0 only if all 21 claims pass. Standard output is deterministic (timing goes to standard error), so it can be
 compared byte for byte with `replays/wall_d2/expected_output.txt`; hashes are in `replays/wall_d2/SHA256SUMS`
-(`expected_output.txt` sha256 `23d6cef85f5cef533f585d4f4048001988e49a203287711e35895b12135c852c`).
+(`expected_output.txt` sha256 `de0f02bd69524713b81221d2adfa7ea031d014fa0f2a517bdfd4c1c9e585a721`).
 
 Tests (perturbing an input must make the replay fail; also checks the baseline against the expected output):
 

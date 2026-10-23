@@ -475,4 +475,5 @@ def main(perturb_matrix=False):
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(newline="\n")  # byte-identical output on Windows and Linux
     sys.exit(main(perturb_matrix="--perturb-matrix" in sys.argv[1:]))
