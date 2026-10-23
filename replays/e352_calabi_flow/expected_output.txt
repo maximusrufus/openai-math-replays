@@ -1,29 +1,30 @@
 [PASS] CF01: Q(D) = D^3 + 18 D^2 + 71 D - 90 (got D**3 + 18*D**2 + 71*D - 90)
 [PASS] CF02: (3.5) coefficients: s^3 p''' : 1, s^2 p'' : 30 (=30), s p' : 751/4 (=751/4), constant -1215/4 (=-1215/4)
 [PASS] CF03: y = c (16/27)^(1/2) s^(3/2) from s = (27/16)^(1/3) (y/c)^(2/3): y^2/(2 c^2) = (8/27) s^3
-[PASS] CF04: (3.7) |k-k0| <= 4.44605e-13 (stated 4.44605e-13) and |d-d0| <= 5.40506e-12 (stated 5.40506e-12) < .011 R
-[PASS] CF05: alpha^2 - 3 beta = -453/25088 = -453/25088 < 0 (D0 increasing on R)
-[PASS] CF06: D0(-1.08659) = -17566501197647/343000000000000000 = -17566501197647/343000000000000000 < 0 and D0(-1.08655) = 187622583137/2744000000000000 = 187622583137/2744000000000000 > 0
-[PASS] CF07: (3.14) lambda0 = -1.08657 in (-1.08659, -1.08655); Re lambda1 = 0.409358 in (.40933, .40938); Im lambda1 = 0.867153 in (.8671, .86721)
-[PASS] CF08: u- = 114617/280000 > .40933 and u+ = 573113/1400000 < .40938 (rational bounds on Re lambda1)
-[PASS] CF09: H0/1.08655 < .9592 (|lambda1| < .959)
-[PASS] CF10: every entry of Gamma - Lambda has modulus < .001 (max 4.5797e-06)
-[PASS] CF11: absolute row sums of Gamma = ['0.91587', '0.65038', '0.65815'] < (.92, .68, .68)
-[PASS] CF12: M_i = ['1.93706', '1.89678', '1.86156'] < (1.96, 1.92, 1.88)
-[PASS] CF13: 1/(Re lambda1 |D0'(lambda1)|) = 0.814615 < .82
-[PASS] CF14: .8671^2 = 0.751862 < H0/1.08659 - u+^2 = 0.751934 <= v^2 <= H0/1.08655 - u-^2 = 0.751984 < .86721^2 = 0.752053
-[PASS] CF15: numerical v^2 = 0.751955 lies in [0.751934, 0.751984]
-[PASS] CF16: E > (1.08655 + u-)^2 + .8671^2 = 46876434629/15680000000 = 46876434629/15680000000 > 2.9895 > 1.729^2 = 2.989441
-[PASS] CF17: numerical E = (r0+u)^2 + v^2 = 2.98976 > 2.9895, and D0'(-r0) = 2.98976 equals E
-[PASS] CF18: 1/(2*.40933*.8671*1.729) = 500000000000/613674044347 < .82
-[PASS] CF19: (3.9) 3|k| + sum_(i>=2) |a_i| 3^i < .8 at centre and 4 corners (centre: 0.291048)
-[PASS] CF20: jet at s=1: |p|,|p'|,|p''| = 0.30547, 0.14363, 0.074031 all <= 2 (and < .768, .4, .534 as in A.2)
-[PASS] CF21: 1 + p > 0 on 0 < s <= 1 (grid min 1.30547)
-[PASS] CF22: a_2 = (b_0 - 1)/((27/8)*1*11*12) with b_0 = 1/(1+d): a_2 = -0.000642115
-[PASS] CF23: Lemma 3.4: sup_(s>=56) |E_d(p_a)| sampled = 1.478e-14 < 3e-13
-[PASS] CF24: (3.19) ||Pa(d) - Pa(d0)|| / |d - d0| = 0.0017328 <= .01 (at the extreme d of the square)
-[PASS] CF25: (A.1) |q| <= .25 R at all 8 sampled z* (max 0.11455 R)
-[PASS] CF26: (A.1) ||(Re xi, Im xi) - z*||_inf <= .13 R at all sampled z* (max 0.0027758 R)
-[PASS] CF27: 1 + p > 0 on [1, 56] at all sampled z* (min over integer s: 0.24798)
+[PASS] CF04: transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56
+[PASS] CF05: (3.7) |k-k0| <= 4.44605e-13 (stated 4.44605e-13) and |d-d0| <= 5.40506e-12 (stated 5.40506e-12) < .011 R
+[PASS] CF06: alpha^2 - 3 beta = -453/25088 = -453/25088 < 0 (D0 increasing on R)
+[PASS] CF07: D0(-1.08659) = -17566501197647/343000000000000000 = -17566501197647/343000000000000000 < 0 and D0(-1.08655) = 187622583137/2744000000000000 = 187622583137/2744000000000000 > 0
+[PASS] CF08: (3.14) lambda0 = -1.08657 in (-1.08659, -1.08655); Re lambda1 = 0.409358 in (.40933, .40938); Im lambda1 = 0.867153 in (.8671, .86721)
+[PASS] CF09: u- = 114617/280000 > .40933 and u+ = 573113/1400000 < .40938 (rational bounds on Re lambda1)
+[PASS] CF10: H0/1.08655 < .9592 (|lambda1| < .959)
+[PASS] CF11: every entry of Gamma - Lambda has modulus < .001 (max 4.5797e-06)
+[PASS] CF12: absolute row sums of Gamma = ['0.91587', '0.65038', '0.65815'] < (.92, .68, .68)
+[PASS] CF13: M_i = ['1.93706', '1.89678', '1.86156'] < (1.96, 1.92, 1.88)
+[PASS] CF14: 1/(Re lambda1 |D0'(lambda1)|) = 0.814615 < .82
+[PASS] CF15: .8671^2 = 0.751862 < H0/1.08659 - u+^2 = 0.751934 <= v^2 <= H0/1.08655 - u-^2 = 0.751984 < .86721^2 = 0.752053
+[PASS] CF16: numerical v^2 = 0.751955 lies in [0.751934, 0.751984]
+[PASS] CF17: E > (1.08655 + u-)^2 + .8671^2 = 46876434629/15680000000 = 46876434629/15680000000 > 2.9895 > 1.729^2 = 2.989441
+[PASS] CF18: numerical E = (r0+u)^2 + v^2 = 2.98976 > 2.9895, and D0'(-r0) = 2.98976 equals E
+[PASS] CF19: 1/(2*.40933*.8671*1.729) = 500000000000/613674044347 < .82
+[PASS] CF20: (3.9) 3|k| + sum_(i>=2) |a_i| 3^i < .8 at centre and 4 corners (centre: 0.291048)
+[PASS] CF21: jet at s=1: |p|,|p'|,|p''| = 0.30547, 0.14363, 0.074031 all <= 2 (and < .768, .4, .534 as in A.2)
+[PASS] CF22: 1 + p > 0 on 0 < s <= 1 (grid min 1.30547)
+[PASS] CF23: the origin series solves (3.5): residual of p(3) + 30 p''/s + B p'/s^2 + C (p - d)/s^3 + p/(1+p) at s = 1/2 is 2.85e-39 < 1e-20 (numerical derivatives of the summed series)
+[PASS] CF24: Lemma 3.4: sup_(s>=56) |E_d(p_a)| sampled = 1.478e-14 < 3e-13
+[PASS] CF25: (3.19) ||Pa(d) - Pa(d0)|| / |d - d0| = 0.0017328 <= .01 (at the extreme d of the square)
+[PASS] CF26: (A.1) |q| <= .25 R at all 8 sampled z* (max 0.11455 R)
+[PASS] CF27: (A.1) ||(Re xi, Im xi) - z*||_inf <= .13 R at all sampled z* (max 0.0027758 R)
+[PASS] CF28: 1 + p > 0 on [1, 56] at all sampled z* (min over integer s: 0.24798)
 
-27/27 claims passed; RESULT: ALL PASS
+28/28 claims passed; RESULT: ALL PASS

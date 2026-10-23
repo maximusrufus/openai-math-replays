@@ -49,6 +49,10 @@ def Nhat21(n):
     return (z - zp) / 4
 
 
+# the two parameter rows (n0, b0, u0, C) of (4.18)
+ROWS = [dict(n0=60, b0=Fr(105, 4), u0=Fr(1, 8), C=Fr(79, 10)), dict(n0=2304, b0=Fr(784), u0=Fr(1, 100), C=Fr(5))]
+
+
 def f(u):
     return u * u / (2 * (1 - u) ** 2)
 
@@ -101,10 +105,19 @@ def run(selftest):
             for k in range(1, 101)
         ),
     )
+    printed_rows = [(60, Fr(105, 4), Fr(1, 8), Fr(79, 10), Fr(79, 80)), (2304, Fr(784), Fr(1, 100), Fr(5), Fr(1, 20))]
     chk(
-        f"gap bounds: (4/105) log(80/79) = {4 / 105 * log(80 / 79):.8f} and log(20)/784 = {log(20) / 784:.8f}  (log(1/r)/b0 with r=79/80, b0=105/4 and r=1/20, b0=784)",
-        abs(log(80 / 79) / (105 / 4) - 4 / 105 * log(80 / 79)) < 1e-15
-        and abs(log(20) / 784 - log(1 / (1 / 20)) / 784) < 1e-15,
+        "(4.18): the parameter rows (n0, b0, u0, C, r = C u0) are (60, 105/4, 1/8, 79/10, 79/80) and (2304, 784, 1/100, 5, 1/20)",
+        [(w["n0"], w["b0"], w["u0"], w["C"], w["C"] * w["u0"]) for w in ROWS] == printed_rows,
+    )
+    chk(
+        "(4.10) for both rows: 0 < u0 < 1/6, G(u0) <= C, r = C u0 < 1, C(1 - 3 u0) > 3",
+        all(0 < w["u0"] < Fr(1, 6) and Gf(w["u0"]) <= w["C"] and w["C"] * w["u0"] < 1 and w["C"] * (1 - 3 * w["u0"]) > 3 for w in ROWS),
+    )
+    gaps = [log(1 / (w["C"] * w["u0"])) / w["b0"] for w in ROWS]  # (4.14): gamma_L > log(1/r)/b0
+    chk(
+        f"(4.14) gap bounds log(1/r)/b0 = {gaps[0]:.8f} and {gaps[1]:.8f} equal the printed closed forms (4/105) log(80/79) and (log 20)/784",
+        abs(gaps[0] - 4 / 105 * log(80 / 79)) < 1e-15 and abs(gaps[1] - log(20) / 784) < 1e-15,
     )
     # ------------------------------------------------------------ Section 5.2
     chk(
@@ -201,15 +214,13 @@ def run(selftest):
     pass
     chk(
         f"R(.88), R(.99), R(.998) = {[round(float(v), 6) for v in Rv.values()]} vs printed 0.1359, 0.0721, 0.068404 ",
-        abs(float(Rv["0.88"]) - 0.1359) < 1e-4
-        and abs(float(Rv["0.99"]) - 0.0721) < 1e-4
-        and abs(float(Rv["0.998"]) - 0.068404) < 1e-6,
+        Rv["0.88"] == Fr(1359, 10000) and Rv["0.99"] == Fr(721, 10000) and Rv["0.998"] == Fr(68404, 10**6),  # exact
     )
     c1 = 1 - Fr(99, 100) ** 4 - Fr(1359, 10000) ** 2
     c2 = 1 - Fr(998, 1000) ** 4 - Fr(721, 10000) ** 2
     chk(
         f"1 - 0.99^4 - R(.88)^2 = {float(c1):.8f} (printed 0.02093518, using R=.1359); 1 - 0.998^4 - R(.99)^2 = {float(c2):.12f} (printed 0.002777621984, using R=.0721)",
-        abs(float(c1) - 0.02093518) < 1e-8 and c2 > 0,
+        c1 == Fr(2093518, 10**8) and c2 == Fr(2777621984, 10**12),  # equal to the printed values at their full printed precision
     )
     c2b = 1 - Fr(998, 1000) ** 4 - Rv["0.99"] ** 2
     S60 = (1 + Rv["0.998"] / Fr(998, 1000) ** 2) ** -2

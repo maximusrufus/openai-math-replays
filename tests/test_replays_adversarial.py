@@ -1,5 +1,5 @@
-"""Adversarial tests for the eight additional replays: each replay has a --perturb mode that changes exactly one input of the
-computation; the replay must then exit 1 and print the corresponding FAIL line.
+"""Adversarial tests for the eight additional replays: each replay has a --perturb mode that changes exactly one INPUT and then runs the
+unchanged main checks; the replay must exit 1 and print the corresponding FAIL line.
 
   python -m unittest discover -s tests -v                 # all
   python -m unittest tests.test_replays_adversarial -v    # only these
@@ -18,49 +18,49 @@ CASES = [
     (
         "e059_zariski_multiplicity",
         "replay_zariski.py",
-        "mu(d0) = 51 for the perturbed curve",
+        "mu(d0) = 51 and mu(d1) = 51",
         "q1: w^8 -> w^7",
     ),
     (
         "e067_campana_peternell",
         "replay_campana_peternell.py",
-        "N (B_i H_j) = 0 for the perturbed witness",
+        "N (B_i H_j) = 0 (product witness)",
         "witness entry Ha[4] + 1",
     ),
     (
         "e101_simplex_isotropic",
         "replay_simplex.py",
-        "(2.5)-(2.6) step bound m0 on U1 raised",
+        "dlogM/dlogq >= m0 on U1",
         "m0(U1) .68 -> .75",
     ),
     (
         "e138_subset_sum",
         "replay_subset_sum.py",
-        "Table 1 (nodes 0..32) reproduced",
+        "Table 1 (nodes 0..32)",
         "sign of r6 flipped",
     ),
     (
         "e153_bernoulli_non_pisot",
         "replay_bernoulli.py",
-        "root-disk certificate",
+        "2*10^35 ||p(z)||_1 < ||p'(z)||_inf at all 31 centres",
         "one polynomial coefficient + 1",
     ),
     (
         "e268_haldane_gap",
         "replay_haldane.py",
-        "(C.8) at N = 72",
+        "N=72: V_N > 0",
         "MPS diagonal parameter D_1 + 1",
     ),
     (
         "e318_chromatic_splitting",
         "replay_chromatic.py",
-        "det d3[R3,C3] = 1024",
+        "|det d3[R3,C3]| =",
         "row index 61 -> 62",
     ),
     (
         "e352_calabi_flow",
         "replay_calabi.py",
-        "(A.1) |q| <= .25 R at the centre",
+        "(A.1) |q| <= .25 R at all 8 sampled z*",
         "k shifted by 1e-9",
     ),
 ]
@@ -81,12 +81,13 @@ class Perturbed(unittest.TestCase):
 
 def make(slug, script, line, what):
     def test(self):
-        p = run(slug, script, "--perturb")
+        extra = ["--quick"] if slug.startswith("e101") else []
+        p = run(slug, script, "--perturb", *extra)
         self.assertEqual(p.returncode, 1, p.stdout[-600:] + p.stderr[-600:])
-        self.assertIn(
-            line,
-            p.stdout,
-            f"perturbation ({what}) did not produce the expected FAIL line",
+        fails = [ln for ln in p.stdout.splitlines() if ln.startswith("[FAIL]")]
+        self.assertTrue(
+            any(line in ln for ln in fails),
+            f"perturbation ({what}) did not produce the expected FAIL line: {fails}",
         )
         self.assertIn("RESULT: FAILURES", p.stdout)
 

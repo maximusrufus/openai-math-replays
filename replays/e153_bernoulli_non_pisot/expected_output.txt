@@ -38,12 +38,13 @@
 [PASS] B38: E Re(Z G) > 0.00021082 > .000210 and E|G|^2 < 0.000144119 < .000145 (error margins as in A.4)
 [PASS] B39: (A.19) T <= 0.0001055 < .000116 and sqrt(T) < .011
 [PASS] B40: number of nonzero rows with k<50 = 8 (stated 8)
-[PASS] B41: small-row weights W*w_ks vs the printed list: {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)} (stated {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)}); max |diff| = 0
+[PASS] B41: small-row weights W*w_ks equal the printed list exactly: {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)} (stated {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)})
 [PASS] B42: (A.20) max |tan(pi f_v(m))| over the big rows (k>=50; the constant, type-1 and k<50 rows are the small rows), -70<=m<=0: 0.0543 <= .06
-[PASS] B43: (A.22) B2(2C0) = 0.010794 < .011 (paper's upper-rounded: .010862)
-[PASS] B44: (A.22) max B1 = 0.014655 < .015 (paper: .014732)
-[PASS] B45: (A.22) max B0 = 0.003155 < .0032 (paper: .003156)
-[PASS] B46: final: .000116*.011 + 2*.012*.011*.015 + .012^2*.0032 = 5.6968e-06 (stated .0000056968) < .000007
-[PASS] B47: (6.12)/(6.13) consequence: weights bound x* = .199; E L_i > .000210 > 0; E|G|^2 < .000145; E(Z^2 G^2) < .000007
+[PASS] B43: (A.22) B2(2C0) = 0.010794 < .011, and below the printed upper-rounded value .010862 within 1%
+[PASS] B44: (A.22) max B1 = 0.014655 < .015, and below the printed value .014732 within 1%
+[PASS] B45: (A.22) max B0 = 0.003155 < .0032, and below the printed value .003156 within 1%
+[PASS] B46: stated parameters of (A.20)-(A.22): t = .06, Delta = 5e-06, W = 1e+09
+[PASS] B47: final: .000116*.011 + 2*.012*.011*.015 + .012^2*.0032 = 5.6968e-06 (stated .0000056968) < .000007
+[PASS] B48: (6.12)/(6.13) consequence: weights bound x* = .199; E L_i > .000210 > 0; E|G|^2 < .000145; E(Z^2 G^2) < .000007
 
-47/47 claims passed; RESULT: ALL PASS
+48/48 claims passed; RESULT: ALL PASS

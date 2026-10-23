@@ -368,17 +368,18 @@ def main(perturb_matrix=False):
     import sympy as sp
     from sympy.matrices.normalforms import smith_normal_form
 
-    # columns x1,a1,x2,a2,s ; rows = abelianised relators
-    Pab = sp.Matrix(
-        [[0, 1 - 4, 0, 0, 0], [0, 0, 0, 1 - 3, 0], [1, 0, 0, -13, 0], [0, -5, 1, 0, 0]]
-    )
-    Gab = sp.Matrix(Pab.tolist() + [[2, 0, 0, 0, 0], [0, 0, 3, 0, 0]])
+    # columns x1,a1,x2,a2,s ; rows = abelianised relators, derived from the relator words RELS (exponent sums)
+    def abel(w):
+        return [sum(e for g, e in w if g == gen) for gen in GENS]
+
+    Pab = sp.Matrix([abel(RELS[k]) for k in ("r1", "r2", "r3", "r4")])
+    Gab = sp.Matrix(Pab.tolist() + [abel(word("x1 x1")), abel(word("x2 x2 x2"))])  # plus t1 = x1^2 and t2 = x2^3
     sP = [abs(x) for x in smith_normal_form(Pab, domain=sp.ZZ).diagonal() if x != 0]
     sG = [abs(x) for x in smith_normal_form(Gab, domain=sp.ZZ).diagonal() if x != 0]
     claim(
         "C9",
         "P^ab = Z + Z/6 (rank 1; torsion from Smith form) and G^ab = P^ab (adding 2*x1, 3*x2 changes nothing), as K perfect would imply",
-        sorted(sP) == sorted(sG) and Pab.rank() == 4,
+        sorted(sP) == sorted(sG) == [1, 1, 1, 6] and Pab.rank() == 4,
         f"SNF(P^ab) diag={sP}, SNF(G^ab) diag={sG}",
     )
 
@@ -461,7 +462,7 @@ def main(perturb_matrix=False):
     claim(
         "C11",
         "sanity (bounded, necessary condition only): in every homomorphism P -> AGL(1,p), p in {2,3,5,7}, t1 and t2 map to 1",
-        bad == 0,
+        bad == 0 and checked == 1568,  # the search is exhaustive over p in {2,3,5,7}: exactly 1568 homomorphisms
         f"{checked} homomorphisms examined ({nonab} with non-abelian image), {bad} violations",
     )
 

@@ -320,15 +320,8 @@ def build_C(rts, mneg=8000, mpos=150000):
 def run():
     selftest = SELFTEST
     t0 = time.time()
-    if PERTURB:
-        coefs = poly_coeffs()
-        coefs[5] += 1
-        cent = table_centers()
-        E = 10**40
-        Vr, Vi, h = horner_gauss(coefs, cent[0], E)
-        Wr, Wi, h1 = horner_gauss([j * coefs[j] for j in range(1, 32)], cent[0], E)
-        chk("root-disk certificate 2e35 ||p(z)||_1 < ||p'(z)||_inf at z_beta for the polynomial with one coefficient changed", 2 * 10**35 * (abs(Vr) + abs(Vi)) * h1 < max(abs(Wr), abs(Wi)) * h)
-        return finish()
+    if PERTURB:  # perturb the INPUT (real part of the 4th table centre moved by 1e-30), then run the unchanged main checks
+        TABLE1[3] = (TABLE1[3][0] + 10**10, TABLE1[3][1])
     rts, beta, al = roots_part(selftest)
     salem_part(selftest)
     ms, C0 = build_C(rts)
@@ -409,6 +402,7 @@ def run():
     # weights (A.7)
     W = 10**9
     rows = []  # (w (float), k, s)
+    irows = []  # (signed integer numerator of w, k, s)
     for k in range(30, 2001):
         for s, rv in ((0, Pp[k]), (1, Pm[k])):
             amt = max(0.0, abs(rv) - 0.00026)
@@ -416,18 +410,22 @@ def run():
             if wnum == 0:
                 continue
             rows.append((np.sign(rv) * wnum / W, k, s))
+            irows.append((int(np.sign(rv)) * wnum, k, s))
     X, Y = -0.001, 0.0055
     nR = len(rows)
     sumw = abs(X) + abs(Y) + sum(abs(w) for w, _, _ in rows)
     sumw50 = abs(X) + abs(Y) + sum(abs(w) for w, k, _ in rows if k < 50)
+    xw, yw = round(abs(X) * W), round(abs(Y) * W)  # |X| and |Y| as integers in units 1/W
+    isum = xw + yw + sum(abs(v) for v, _, _ in irows)
+    isum50 = xw + yw + sum(abs(v) for v, k, _ in irows if k < 50)
     chk(f"|R| = {nR} (stated 753)", nR == 753)
     chk(
-        f"|X|+|Y|+sum|w| = {sumw * W:.0f}/W (stated 198442946/W); < 0.199 = {sumw < 0.199}",
-        abs(sumw * W - 198442946) <= 5 and sumw < 0.199,
+        f"|X|+|Y|+sum|w| = {isum}/W (stated 198442946/W); < 0.199 = {sumw < 0.199}",
+        isum == 198442946 and sumw < 0.199,  # exact integer equality
     )
     chk(
-        f"sum over k<50 = {sumw50 * W:.0f}/W (stated 11816095/W); total weight of small rows < .012 = {sumw50 < 0.012}",
-        abs(sumw50 * W - 11816095) <= 5 and sumw50 < 0.012,
+        f"sum over k<50 = {isum50}/W (stated 11816095/W); total weight of small rows < .012 = {sumw50 < 0.012}",
+        isum50 == 11816095 and sumw50 < 0.012,  # exact integer equality
     )
     # (A.14) correlation
     ec = X * b0 + Y * e33 + sum(w * (Pp[k] if s == 0 else Pm[k]) for w, k, s in rows)
@@ -519,13 +517,13 @@ def run():
         44: (1, 458216),
         47: (1, 756904),
     }
-    got = {k: (s, int(round(w * W))) for w, k, s in rows if k < 50}
+    got = {k: (s, v) for v, k, s in irows if k < 50}
     chk(
-        f"small-row weights W*w_ks vs the printed list: {got} (stated {stated}); max |diff| = {max(abs(got[k][1] - stated[k][1]) for k in stated if k in got) if all(k in got for k in stated) else 'keys differ'}",
+        f"small-row weights W*w_ks equal the printed list exactly: {got} (stated {stated})",
         all(
             k in got
             and got[k][0] == stated[k][0]
-            and abs(got[k][1] - stated[k][1]) <= 2
+            and got[k][1] == stated[k][1]  # exact
             for k in stated
         )
         and set(got) == set(stated),
@@ -574,11 +572,10 @@ def run():
         for r in small
         for q in small
     )
-    chk(
-        f"(A.22) B2(2C0) = {b2:.6f} < .011 (paper's upper-rounded: .010862)", b2 < 0.011
-    )
-    chk(f"(A.22) max B1 = {b1max:.6f} < .015 (paper: .014732)", b1max < 0.015)
-    chk(f"(A.22) max B0 = {b0max:.6f} < .0032 (paper: .003156)", b0max < 0.0032)
+    chk(f"(A.22) B2(2C0) = {b2:.6f} < .011, and below the printed upper-rounded value .010862 within 1%", b2 < 0.011 and 0.99 * 0.010862 <= b2 <= 0.010862)
+    chk(f"(A.22) max B1 = {b1max:.6f} < .015, and below the printed value .014732 within 1%", b1max < 0.015 and 0.99 * 0.014732 <= b1max <= 0.014732)
+    chk(f"(A.22) max B0 = {b0max:.6f} < .0032, and below the printed value .003156 within 1%", b0max < 0.0032 and 0.99 * 0.003156 <= b0max <= 0.003156)
+    chk("stated parameters of (A.20)-(A.22): t = .06, Delta = 5e-6, W = 1e9", t == 0.06 and Delta == 5e-6 and W == 10**9)
     fin = (
         Fr(116, 10**6) * Fr(11, 1000)
         + 2 * Fr(12, 1000) * Fr(11, 1000) * Fr(15, 1000)

@@ -17,7 +17,13 @@
 [PASS] S17: Lemma 4.1 (4.3)+(4.4) on V1 (0.5, 4.0) [nodes 3184]
 [PASS] S18: Lemma 4.1 (4.6) a<=-1 on (-6.0, -1.0) [nodes 7575]
 [PASS] S19: exact: (3.29) factorisation
-[PASS] S20: exact: (4.7) arithmetic < .111 (and the paper's intermediate .282 -> max over b in [0,.5] of (b-beta)^2 = .2025... see note)
-[PASS] S21: exact: 0 < alpha, 1-eps-kappa > 0
+[PASS] S20: exact: (4.7) max_b (b-beta)^2 over [0,1/2] equals .28^2
+[PASS] S21: exact: (4.7) s(.28^2 + alpha .67^2/(4(1-eps-kappa))) = .11003 < .111; and .075/(4*.36) form: 4(1-eps-kappa) = 1.44
+[PASS] S22: exact: 0 < alpha, 1-eps-kappa > 0
+[PASS] S23: exact: stated constants: alpha = 3/40, beta = 7/25, c = 3/2, eps = 3/20, kappa = 49/100
+[PASS] S24: exact: stated constants: Q = [[.43, .13], [.13, 2.72]] (Proposition 3.6)
+[PASS] S25: exact: stated constants of (4.2): .67, .25, .46
+[PASS] S26: exact: the six intervals O, P1, R1, U1, V1, T1 tile [-6, 10] without gap or overlap
+[PASS] S27: exact: stated (2.5)-(2.6) step table m0 = 0, .19, .38, .68, .68, .68
 
-21/21 claims passed; RESULT: ALL PASS
+27/27 claims passed; RESULT: ALL PASS

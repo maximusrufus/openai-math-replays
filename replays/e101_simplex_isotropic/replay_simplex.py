@@ -72,6 +72,8 @@ Astar = S + 1 + S / 8
 etastar = S * BETA + (1 + S / 8) * GAMMA
 nustar = S * BETA**2 + (9 * S / 8) * GAMMA**2
 Qm = [[R(43, 100), R(13, 100)], [R(13, 100), R(272, 100)]]
+# the three lower/upper bounds of (4.2) that are used as numbers in claim_42
+C42 = dict(h0=R(67, 100), p_pos=R(25, 100), p_a4=R(46, 100))
 
 
 def Phi(x):
@@ -367,13 +369,13 @@ def claim_42(shift=0):
     )
     res["p>0"] = prove(-6.0, 10.0, lambda F, a: ge(F["p"], R(0)))
     res["|h0|<=.67 sqrt p"] = prove(
-        -6.0, 10.0, lambda F, a: le(F["h0"] ** 2, R(67, 100) ** 2 * F["p"] + shift)
+        -6.0, 10.0, lambda F, a: le(F["h0"] ** 2, C42["h0"] ** 2 * F["p"] + shift)
     )
     res["p>=1/(7+a^2), a<=0"] = prove(
         -6.0, 0.0, lambda F, a: ge(F["p"] * (7 + a * a), R(1) + shift)
     )
-    res["p>=.25, a>=0"] = prove(0.0, 10.0, lambda F, a: ge(F["p"], R(25, 100) + shift))
-    res["p>=.46, a>=4"] = prove(4.0, 10.0, lambda F, a: ge(F["p"], R(46, 100) + shift))
+    res["p>=.25, a>=0"] = prove(0.0, 10.0, lambda F, a: ge(F["p"], C42["p_pos"] + shift))
+    res["p>=.46, a>=4"] = prove(4.0, 10.0, lambda F, a: ge(F["p"], C42["p_a4"] + shift))
     return res
 
 
@@ -410,18 +412,38 @@ def exact_checks():
     out["(3.29) factorisation"] = (
         sp.simplify(diff - sp.Rational(1, 50) * (1 - 2 * u) * (1 + 68 * u)) == 0
     )
-    # (4.7): s((b-beta)^2 + alpha h0^2 /(4(1-eps-kappa)p)) < .111 with b<.5, |h0|<=.67 sqrt p
+    # (4.7): sqrt( s ( (b-beta)^2 + alpha h0^2 / (4 (1-eps-kappa) p) ) ) with 0 < b < 1/2 and |h0| <= .67 sqrt(p):
+    # the manuscript's middle expression is s (.28^2 + .075 * .67^2 / (4 * .36)) < .111
     s = Fr(1) / (1 - Fr(3, 40))
     beta = Fr(7, 25)
+    bmax2 = max(beta**2, (Fr(1, 2) - beta) ** 2)  # max of (b - beta)^2 over [0, 1/2]
+    out["(4.7) max_b (b-beta)^2 over [0,1/2] equals .28^2"] = bmax2 == Fr(28, 100) ** 2
     val = s * (
-        (Fr(1, 2) - beta) ** 2
+        Fr(28, 100) ** 2
         + Fr(3, 40) * Fr(67, 100) ** 2 / (4 * (1 - Fr(3, 20) - Fr(49, 100)))
     )
-    out[
-        "(4.7) arithmetic < .111 (and the paper's intermediate .282 -> max over b in [0,.5] of (b-beta)^2 = .2025... see note)"
-    ] = val < Fr(111, 1000)
+    out["(4.7) s(.28^2 + alpha .67^2/(4(1-eps-kappa))) = .11003 < .111; and .075/(4*.36) form: 4(1-eps-kappa) = 1.44"] = val < Fr(111, 1000) and 4 * (1 - Fr(3, 20) - Fr(49, 100)) == Fr(144, 100)
     # (3.8)-(3.24): the stated rational constants
     out["0 < alpha, 1-eps-kappa > 0"] = Fr(3, 20) + Fr(49, 100) < 1
+    # the constants used by the claims equal the printed ones (second, independent transcription)
+    def eq(x, num, den):
+        return abs(x - R(num, den)) < arb("1e-40")
+
+    out["stated constants: alpha = 3/40, beta = 7/25, c = 3/2, eps = 3/20, kappa = 49/100"] = (
+        eq(ALPHA, 3, 40) and eq(BETA, 7, 25) and eq(CC, 3, 2) and eq(EPS, 3, 20) and eq(KAPPA, 49, 100)
+    )
+    out["stated constants: Q = [[.43, .13], [.13, 2.72]] (Proposition 3.6)"] = (
+        eq(Qm[0][0], 43, 100) and eq(Qm[0][1], 13, 100) and eq(Qm[1][0], 13, 100) and eq(Qm[1][1], 272, 100)
+    )
+    out["stated constants of (4.2): .67, .25, .46"] = eq(C42["h0"], 67, 100) and eq(C42["p_pos"], 25, 100) and eq(C42["p_a4"], 46, 100)
+    out["the six intervals O, P1, R1, U1, V1, T1 tile [-6, 10] without gap or overlap"] = (
+        INTERVALS["O"][0] == -6.0
+        and INTERVALS["T1"][1] == 10.0
+        and all(INTERVALS[x][1] == INTERVALS[y][0] for x, y in (("O", "P1"), ("P1", "R1"), ("R1", "U1"), ("U1", "V1"), ("V1", "T1")))
+    )
+    out["stated (2.5)-(2.6) step table m0 = 0, .19, .38, .68, .68, .68"] = all(
+        eq(M0[k], n, d) for k, n, d in (("O", 0, 1), ("P1", 19, 100), ("R1", 38, 100), ("U1", 68, 100), ("V1", 68, 100), ("T1", 68, 100))
+    )
     return out
 
 
@@ -432,10 +454,8 @@ def report(name, res):
 
 def run():
     t0 = time.time()
-    if PERTURB:
-        report("(2.5)-(2.6) step bound m0 on U1 raised from .68 to .75", claim_m0("U1", scale=R(75, 68)))
-        log(f"elapsed {time.time() - t0:.1f}s")
-        return finish()
+    if PERTURB:  # perturb the INPUT (step bound m0 on U1 raised from .68 to .75), then run the unchanged main checks
+        M0["U1"] = R(75, 100)
     if SELFTEST:
         wrong = [
             ("m0 on U1 raised to .75", claim_m0("U1", scale=R(75, 68))),

@@ -63,8 +63,9 @@ def finish():
 
 
 # ---------------------------------------------------------------- float64 continuous replay
-def continuous(N, rr=R6, ss=S6, kappa=KAPPA, c1=8.5, c2=8.3, extra=None):
+def continuous(N, rr=None, ss=S6, kappa=KAPPA, c1=8.5, c2=8.3, extra=None):
     x = 2 * np.pi * np.arange(N) / N
+    rr = R6 if rr is None else rr
     r = sum(c * np.cos((j + 1) * x) for j, c in enumerate(rr))
     s = sum(c * np.cos((j + 1) * x) for j, c in enumerate(ss))
     F = 2.0**r
@@ -114,7 +115,8 @@ def continuous(N, rr=R6, ss=S6, kappa=KAPPA, c1=8.5, c2=8.3, extra=None):
 
 
 # ---------------------------------------------------------------- 64-point hats in ball arithmetic
-def hats64(prec_digits=None, c1=8.5, c2=8.3, rr=R6, ss=S6, kappa=KAPPA):
+def hats64(prec_digits=None, c1=8.5, c2=8.3, rr=None, ss=S6, kappa=KAPPA):
+    rr = R6 if rr is None else rr
     n = 64
     pi = arb.pi()
     xs = [2 * pi * j / n for j in range(n)]
@@ -155,7 +157,7 @@ def hats64(prec_digits=None, c1=8.5, c2=8.3, rr=R6, ss=S6, kappa=KAPPA):
     X1 = [M2[j] * two ** (arb(str(c1)) * (Dl - uh[j])) for j in range(n)]
     X2 = [M2[j] * two ** (arb(str(c2)) * (aa * vh[j] - uh[j])) for j in range(n)]
     return dict(
-        Zf=Zf, Zg=Zg, Zfk=Zfk, Zgk=Zgk, P=Ph, Y=Yh, X1=X1, X2=X2, H=Hh, r=r, s=s, xs=xs
+        Zf=Zf, Zg=Zg, Zfk=Zfk, Zgk=Zgk, P=Ph, Y=Yh, X1=X1, X2=X2, H=Hh, r=r, s=s, xs=xs, L=Lh, B=Bh, u=uh, v=vh
     )
 
 
@@ -226,15 +228,9 @@ def lowspace_exact(selftest):
 def run():
     selftest = SELFTEST
     t0 = time.time()
-    if PERTURB:
-        Hp = hats64(rr=tuple(list(R6[:5]) + [0.314]))
-        worst = [0, 0, 0, 0]
-        for j, (jj, p, y, x1, x2) in enumerate(TAB):
-            got = (mid(Hp["P"][j]), mid(Hp["Y"][j]), mid(Hp["X1"][j]), mid(Hp["X2"][j]))
-            for c in range(4):
-                worst[c] = max(worst[c], abs(got[c] - (p, y, x1, x2)[c]))
-        chk("Table 1 (nodes 0..32) reproduced within the allowed errors with the sign of r6 flipped", all(worst[c] <= ERR[c] for c in range(4)))
-        return finish()
+    if PERTURB:  # perturb the INPUT (sign of r6 flipped), then run the unchanged main checks
+        global R6
+        R6 = tuple(list(R6[:5]) + [0.314])
     # parameters
     chk(
         "Delta = eta - tau = 0.02776 and Gamma = 2 tau - eta = 0.46220 (exact decimal arithmetic)",
@@ -319,27 +315,21 @@ def run():
         f"(3.3): min (D-A) = {(o['D'] - o['A']).min():.4f} >= 0 and min (D-E) = {(o['D'] - o['E']).min():.4f} >= 0 (direct from the definitions)",
         (o["D"] - o["A"]).min() >= -1e-12 and (o["D"] - o["E"]).min() >= -1e-12,
     )
-    # fine u at nodes j*(N/64)
-    fine_u = o["u"][::16]
-    hat_u = [
-        mid(
-            arb(1) * 0
-            + (
-                lambda j: (
-                    H64["P"][j].log() / arb(2).log()
-                    - (H64["Zf"].log() + H64["Zg"].log()) / arb(2).log()
-                )
-            )(j)
-        )
-        for j in range(64)
-    ]
-    # (A.2) identity check: L = log Q: continuous Q(x_j) vs log2 Phat_j - log2 Zf - log2 Zg
-    Lfine = np.log2(o["Q"][::16])
-    maxdiff = max(abs(Lfine[j] - hat_u[j]) for j in range(64))
-    chk(
-        f"(A.2) L_j = log P_j - log Zf - log Zg: 64-point hat vs fine continuous Q agree to better than 1e-3",
-        maxdiff < 1e-3,
-    )
+    # (A.2): D = B - L, u = L + (kappa-1) B - H, v = (2-kappa) B - 2 L + H, with L = log Q at the 64 nodes; the hats (64-point sums)
+    # against the continuous quantities of (3.1)-(3.2) computed on 1024 nodes (every 16th node is a 64-point node)
+    fl = lambda xs_: np.array([float(mid(x_)) for x_ in xs_])
+    Lh, Bh, uh, vh = fl(H64["L"]), fl(H64["B"]), fl(H64["u"]), fl(H64["v"])
+    Hh = float(mid(H64["H"]))
+    k_ = KAPPA
+    sl = slice(None, None, 16)
+    eL = np.abs(np.log2(o["Q"][sl]) - Lh).max()
+    eD = np.abs(o["D"][sl] - (Bh - Lh)).max()
+    eu = np.abs(o["u"][sl] - (Lh + (k_ - 1) * Bh - Hh)).max()
+    ev = np.abs(o["v"][sl] - ((2 - k_) * Bh - 2 * Lh + Hh)).max()
+    chk("(A.2) L = log Q: 64-point hats agree with the continuous log2 Q at the 64 nodes to better than 1e-9", eL < 1e-9)
+    chk("(A.2) D = B - L: continuous D agrees with Bhat - Lhat at the 64 nodes to better than 1e-9", eD < 1e-9)
+    chk("(A.2) u = L + (kappa-1) B - H: continuous u agrees with the hat formula to better than 1e-9", eu < 1e-9)
+    chk("(A.2) v = (2-kappa) B - 2 L + H: continuous v agrees with the hat formula to better than 1e-9", ev < 1e-9)
     if selftest:
         # deliberately wrong inputs
         w1 = continuous(512, c1=8.5 * 1.2)

@@ -398,16 +398,6 @@ def run():
             Nden = Nden * int(x.q) // __import__("math").gcd(Nden, int(x.q))
     res.append((f"all N denominators prime to 10007 (lcm {Nden})", Nden % 10007 != 0))
 
-    if PERTURB:
-        for name, ok in res:
-            chk(name, ok)
-        Ha_p = [fmpq(x) for x in (1, 4, 16, 64, 6, 24, 4, 3, 12, 48, 192, 768, 17, 68, 272, 96, 9, 36)]
-        Ha_p[4] += 1
-        B0 = [fmpq(x) for x in (1, 7, 45, 275, 11, 65, 85, 17, 95, 25, 35)]
-        vec = fmpq_mat(len(C1), 1, [B0[i] * Ha_p[j] for (i, j) in C1])
-        chk("N (B_i H_j) = 0 for the perturbed witness (Ha[4] increased by 1)", iszero(Nfm * vec))
-        return finish()
-
     # --- K2 / K3 ------------------------------------------------------------------
     jpos = {j: k for k, j in enumerate(J)}
     c1pos = {e: k for k, e in enumerate(C1)}
@@ -513,6 +503,8 @@ def run():
         fmpq(x)
         for x in (1, 4, 16, 64, 6, 24, 4, 3, 12, 48, 192, 768, 17, 68, 272, 96, 9, 36)
     ]
+    if PERTURB:  # perturb the INPUT (witness entry Ha[4] increased by 1), then run the unchanged main checks
+        Ha[4] += 1
     Hb = [
         fmpq(x, 3)
         for x in (3, 8, 21, 54, 9, 24, 6, 14, 37, 97, 252, 648, 37, 97, 252, 96, 16, 42)

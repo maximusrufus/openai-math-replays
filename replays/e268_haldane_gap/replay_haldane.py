@@ -81,6 +81,10 @@ def traces_part(T):
         worst < 1e-10,
     )
     res = {}
+    CUT = 2.5
+    # discarded-eigenvalue bound for the Lanczos runs (n >= 10): at most 3^n eigenvalues above the cut, each contributing < exp(-b CUT)
+    worst_bound = max(3**n * float(np.exp(-b * CUT)) for n, b in [(10, 21 / 2), (10, 49 / 4), (11, 49 / 4), (12, 49 / 4)])
+    chk(f"Lanczos cut E + a n < {CUT}: the discarded eigenvalues change Z by less than {worst_bound:.1e} (3^n e^(-b cut) for the Lanczos cases n = 10, b = 21/2 and n = 10..12, b = 49/4), below 1e-6 (units of the tables)", worst_bound < 1e-6)
     todo = [(n, g) for n in range(4, 13) for g in "1P"] + [(n, "C") for n in (6, 8, 10)]
     for n, g in todo:
         t0 = time.time()
@@ -88,7 +92,7 @@ def traces_part(T):
             out = T.reduced_spectrum(n, thetas[g], verbose=False)
         else:
             out = T.reduced_spectrum(
-                n, thetas[g], cutoff=2.5 - T.A_SHIFT * n, verbose=False, lanczos=True
+                n, thetas[g], cutoff=CUT - T.A_SHIFT * n, verbose=False, lanczos=True
             )
         res[(n, g)] = (T.partition(out, n, 21 / 2), T.partition(out, n, 49 / 4))
         log(f"   n={n} g={g} ({time.time() - t0:.0f}s)")
@@ -120,20 +124,11 @@ def traces_part(T):
 
 def run():
     t0 = time.time()
-    if PERTURB:
-        M = load("haldane_mps")
-        A = M.build_A(diag=[M.DDIAG[0] + 1] + M.DDIAG[1:])
-        U, V = M.contraction(A, 72)
-        U, V = int(U), int(V)
-        cN = 1401482112601
-        chk(
-            "(C.8) at N = 72 with D_1 changed from -289 to -288: V > 0 and -c V <= 1e12 U < (-c+1) V with c = 1401482112601",
-            V > 0 and -cN * V <= 10**12 * U < (-cN + 1) * V,
-        )
-        return finish()
     S = load("haldane_scalar")
     S.run(SELFTEST)
     M = load("haldane_mps")
+    if PERTURB:  # perturb the INPUT (MPS diagonal parameter D_1 changed by 1), then run the unchanged main checks
+        M.DDIAG[0] += 1
     M.run(SELFTEST)
     T = load("haldane_traces")
     traces_part(T)

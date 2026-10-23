@@ -161,8 +161,7 @@ def run():
     chk(
         f"sl2: det d1 = {detd1} (stated 4); d1 = {d1} vs printed [[0,0,-1],[2,0,0],[0,-2,0]]",
         abs(int(detd1)) == 4
-        and sorted(map(abs, sum(d1, [])))
-        == sorted(map(abs, [0, 0, -1, 2, 0, 0, 0, -2, 0])),
+        and [[int(x) for x in row] for row in d1] == [[0, 0, -1], [2, 0, 0], [0, -2, 0]],  # entry by entry, signs and order
     )
     chk(
         "sl2: d2 = 0 (C^2 -> C^3 = Lambda^3 of a 3-dimensional space, d2 has all zero entries)",
@@ -259,17 +258,14 @@ def run():
         45,
         52,
     )
+    if PERTURB:  # perturb the INPUT (last row index of R3: 61 -> 62), then run the unchanged main checks
+        R3 = tuple(list(R3[:-1]) + [62])
     chk(
         f"index sets: |R1|=|C1|=8, |R2|=|C2|=20, |R3|=|C3|={len(R3)}=35",
         len(R1) == len(C1) == 8
         and len(R2) == len(C2) == 20
         and len(R3) == len(C3) == 35,
     )
-    if PERTURB:
-        R3bad = tuple(list(R3[:-1]) + [62])
-        mb = int(minor(mats[3], R3bad, C3))
-        chk("det d3[R3,C3] = 1024 with the last row index 61 replaced by 62", abs(mb) == 1024)
-        return finish()
     m1 = int(minor(mats[1], R1, C1))
     m2_ = int(minor(mats[2], R2, C2))
     m3_ = int(minor(mats[3], R3, C3))

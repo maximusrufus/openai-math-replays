@@ -177,6 +177,9 @@ def D0poly(lam, S=S0):
 def run():
     selftest = SELFTEST
     t0 = time.time()
+    if PERTURB:  # perturb the INPUT (k0 shifted by 1e-9), then run the unchanged main checks
+        global K0
+        K0 = K0 + Fr(1, 10**9)
     # --- (3.5) coefficients from Q(D) = (D-1)(D+9)(D+10)
     Dv, s_ = sp.symbols("D s")
     Q = sp.expand((Dv - 1) * (Dv + 9) * (Dv + 10))
@@ -202,8 +205,16 @@ def run():
         == 0,
     )
     # --- (3.7)
-    kmax = Fr(1, 10**8) * (25190 + 63731) * R_
-    dmax = Fr(1, 10**8) * (721855 + 359157) * R_
+    chk(
+        "transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56",
+        K0 == Fr(-94617116666041, 10**15)
+        and D0 == Fr(400682721856639, 10**15)
+        and MAT == [[25190, -63731], [721855, 359157]]
+        and R_ == Fr(5, 10**10)
+        and S0 == 56,
+    )
+    kmax = Fr(1, 10**8) * sum(abs(x) for x in MAT[0]) * R_  # row sum of |entries| times R
+    dmax = Fr(1, 10**8) * sum(abs(x) for x in MAT[1]) * R_
     chk(
         f"(3.7) |k-k0| <= {float(kmax):.5e} (stated 4.44605e-13) and |d-d0| <= {float(dmax):.5e} (stated 5.40506e-12) < .011 R",
         abs(float(kmax) - 4.44605e-13) < 1e-17
@@ -321,16 +332,6 @@ def run():
         Fr(1, 1) / (2 * Fr(40933, 100000) * Fr(8671, 10000) * Fr(1729, 1000))
         < Fr(82, 100),
     )
-    if PERTURB:
-        k, d = kd((0, 0))
-        kk, dd = mp.mpf(k.numerator) / k.denominator, mp.mpf(d.numerator) / d.denominator
-        (pj, p1j, p2j), mn = shoot(kk + mp.mpf(10) ** -9, dd, record_min=False)
-        pa = pa_jet(dd, mp.mpf(S0))
-        delta = [pj - pa[0], p1j - pa[1], p2j - pa[2]]
-        q = sum(Gam[0][j] * delta[j] for j in range(3))
-        Rf = mp.mpf(R_.numerator) / R_.denominator
-        chk("(A.1) |q| <= .25 R at the centre with k shifted by 1e-9", abs(q) <= 0.25 * Rf)
-        return finish()
     # --- Lemma 3.2 constants at the centre and corners
     ok32 = True
     for zs in [(0, 0)] + [(sx * R_, sy * R_) for sx in (-1, 1) for sy in (-1, 1)]:
@@ -354,11 +355,21 @@ def run():
     )
     pos = min(1 + origin_jet(kc, dc, mp.mpf(i) / 50)[0] for i in range(1, 51))
     chk(f"1 + p > 0 on 0 < s <= 1 (grid min {mp.nstr(pos, 6)})", pos > 0)
-    # recurrence sanity: (A.4): a_2 for centre
-    chk(
-        f"a_2 = (b_0 - 1)/((27/8)*1*11*12) with b_0 = 1/(1+d): a_2 = {mp.nstr(z[2], 12)}",
-        abs(z[2] - (1 / (1 + dc) - 1) / (mp.mpf(27) / 8 * 11 * 12)) < 1e-30,
+    # the origin series solves (3.5): residual of the ODE at s0 = 1/2, with the derivatives of the summed series taken by numerical
+    # differentiation (independent of the coefficient recurrence and of the analytic jets)
+    s0 = mp.mpf(1) / 2
+
+    def ps(x):
+        return origin_jet(kc, dc, x)[0]
+
+    resid = abs(
+        mp.diff(ps, s0, 3)
+        + 30 / s0 * mp.diff(ps, s0, 2)
+        + mpq(B_) / s0**2 * mp.diff(ps, s0, 1)
+        + mpq(C_) / s0**3 * (ps(s0) - dc)
+        + ps(s0) / (1 + ps(s0))
     )
+    chk(f"the origin series solves (3.5): residual of p(3) + 30 p''/s + B p'/s^2 + C (p - d)/s^3 + p/(1+p) at s = 1/2 is {mp.nstr(resid, 3)} < 1e-20 (numerical derivatives of the summed series)", resid < mp.mpf(10) ** -20)
     # --- Lemma 3.4
     sup = max(
         abs(Ed_residual(dd, mp.mpf(s)))

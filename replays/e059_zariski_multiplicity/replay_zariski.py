@@ -73,11 +73,16 @@ def check31(d):
     ok &= a > 0 and b > 0
     ok &= al + be == 4
     ok &= a * al == b * be
-    ok &= (a - 2) * al / 4 > 4
-    ok &= (b - 2) * be / 4 > 4
-    ok &= a > 4 and b > 4
     ok &= n0 < n1 < 2 * n0
+    ok &= n1 == n0 + 5 * 2 ** d["r"]  # the shift of Lemma 3.1, asserted independently of how the instance was built
+    ok &= a == (n0 * n0 - 1) // 4 and b == (n1 * n1 - 1) // 4
     return ok
+
+
+def strict_bounds(d):
+    """the two strict lower bounds of Lemma 3.1; they hold only for n0 'sufficiently large', so a failure means: n0 too small, skip it"""
+    a, b, al, be = d["a"], d["b"], d["alpha"], d["beta"]
+    return (a - 2) * al / 4 > 4 and (b - 2) * be / 4 > 4 and a > 4 and b > 4
 
 
 def check91(d, qlist=(1, 4)):
@@ -108,6 +113,8 @@ def check91(d, qlist=(1, 4)):
                 break
         found[q] = sol
         ok &= sol is not None
+        if sol is not None:  # verify the found pair directly against the stated conditions
+            ok &= sol[0] > 0 and sol[1] > 0 and (sol[0] - sol[1]) % 4 == 0 and 5 * (b * sol[0] + a * sol[1]) == q * m
     return ok, found
 
 
@@ -123,12 +130,12 @@ def arithmetic(selftest):
             d = lemma31_instance(r, n)
             if d is None:
                 continue
-            if not check31(d):
-                continue  # the lemma says "sufficiently large n0" for the strict bound; skip those below it
+            if not strict_bounds(d):
+                continue  # the lemma requires n0 sufficiently large for the two strict bounds: skip n0 below that threshold
             cand += 1
             okk, f = check91(d)
             count += 1
-            bad += not okk
+            bad += (not okk) or (not check31(d))  # every other property must hold for every admissible n0
     chk(
         f"Lemma 3.1 + 9.1: {count} concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures {bad})",
         bad == 0 and count == 24,
@@ -204,6 +211,11 @@ def build_plane(variant="paper"):
     return u
 
 
+def hfun(X_, T_):
+    """h(X, T) = T (X - T^2)(X - 2 T^2)"""
+    return T_ * (X_ - T_ * T_) * (X_ - 2 * T_ * T_)
+
+
 def plane_polys(w8=8, shift=0):
     # first graph: coordinates (u, w); we reuse ctx variables (X := u, Wv := w)
     u, w = X, Wv
@@ -228,6 +240,8 @@ def plane_checks(selftest):
     phi = u * u + q1
     h0 = u * (phi - u * u) * (phi - 2 * u * u)
     chk("h(pi_0(u,w)) = u q1 q2 as polynomials", h0 == d0)
+    chk("d1 = h(pi_1(x,w)) = psi (x - psi^2)(x - 2 psi^2) with h(X,T) = T (X - T^2)(X - 2 T^2) at (X,T) = (x,psi)", d1 == hfun(X, psi))
+    chk("d0 = h(pi_0(u,w)) with h(X,T) = T (X - T^2)(X - 2 T^2) at (X,T) = (phi,u)", d0 == hfun(phi, u))
     # phi(0,w) = -w^4 (1+w^7)(1+2w^7)
     ev = lambda p, xv: (
         ctx2.from_dict({(0, e[1]): c for e, c in p.to_dict().items() if e[0] == 0})
@@ -270,7 +284,7 @@ def plane_checks(selftest):
         X * X
     )  # placeholder (kept to reuse ctx): real check below uses variables (X,T) = (x,w)
     Xv, T = X, Wv
-    hh = T * (Xv - T * T) * (Xv - 2 * T * T)
+    hh = hfun(Xv, T)
     mu_h, _ = milnor_number(hh, 12)
     chk(f"mu(h) = 6 by exact truncated Jacobian algebra (got {mu_h})", mu_h == 6)
     # gradient formulas (3.1): h_X = T(2X - 3T^2), h_T = X^2 - 9T^2 X + 10 T^4
@@ -362,14 +376,13 @@ def initial_forms():
 
 def run():
     t0 = time.time()
-    if PERTURB:
-        q1p, q2p, d0p, psip, d1p = plane_polys(w8=7)
-        mup, _ = milnor_number(d0p, 60)
-        chk("mu(d0) = 51 for the perturbed curve (w^8 -> w^7 in q1)", mup == 51)
-    else:
-        arithmetic(SELFTEST)
-        initial_forms()
-        plane_checks(SELFTEST)
+    if PERTURB:  # perturb the INPUT (q1: w^8 -> w^7) and run the unchanged main checks
+        global plane_polys
+        _orig = plane_polys
+        plane_polys = lambda w8=7, shift=0: _orig(w8=7, shift=shift)
+    arithmetic(SELFTEST)
+    initial_forms()
+    plane_checks(SELFTEST)
     log(f"elapsed {time.time() - t0:.1f}s")
     return finish()
 
