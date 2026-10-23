@@ -1,0 +1,25 @@
+[PASS] S01: Lemma 2.2/4.1 (4.2) 0<b<1/2, l>0 [nodes 379]
+[PASS] S02: Lemma 2.2/4.1 (4.2) p>0 [nodes 506]
+[PASS] S03: Lemma 2.2/4.1 (4.2) |h0|<=.67 sqrt p [nodes 523]
+[PASS] S04: Lemma 2.2/4.1 (4.2) p>=1/(7+a^2), a<=0 [nodes 99]
+[PASS] S05: Lemma 2.2/4.1 (4.2) p>=.25, a>=0 [nodes 467]
+[PASS] S06: Lemma 2.2/4.1 (4.2) p>=.46, a>=4 [nodes 424]
+[PASS] S07: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on O [nodes 2]
+[PASS] S08: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on P1 [nodes 2]
+[PASS] S09: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on R1 [nodes 2]
+[PASS] S10: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on U1 [nodes 1]
+[PASS] S11: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on V1 [nodes 1]
+[PASS] S12: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on T1 [nodes 2]
+[PASS] S13: Lemma 4.1 (4.3)+(4.4) on O (-6.0, -3.0) [nodes 3032]
+[PASS] S14: Lemma 4.1 (4.3)+(4.4) on P1 (-3.0, -2.0) [nodes 378]
+[PASS] S15: Lemma 4.1 (4.3)+(4.4) on R1 (-2.0, -1.0) [nodes 187]
+[PASS] S16: Lemma 4.1 (4.3)+(4.4) on U1 (-1.0, 0.5) [nodes 99]
+[PASS] S17: Lemma 4.1 (4.3)+(4.4) on V1 (0.5, 4.0) [nodes 3184]
+[PASS] S18: Lemma 4.1 (4.3)+(4.4) on T1 (4.0, 10.0) [nodes 204760]
+[PASS] S19: Lemma 4.1 (4.6) a<=-1 on (-6.0, -1.0) [nodes 7575]
+[PASS] S20: Lemma 4.1 (4.6) a>=-1 on (-1.0, 6.0) [nodes 175193]
+[PASS] S21: exact: (3.29) factorisation
+[PASS] S22: exact: (4.7) arithmetic < .111 (and the paper's intermediate .282 -> max over b in [0,.5] of (b-beta)^2 = .2025... see note)
+[PASS] S23: exact: 0 < alpha, 1-eps-kappa > 0
+
+23/23 claims passed; RESULT: ALL PASS

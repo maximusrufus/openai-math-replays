@@ -1,0 +1,35 @@
+[PASS] CP01: T9 has 581 monomials
+[PASS] CP02: A has 1785 nonzero rows (got 1785)
+[PASS] CP03: rank_Q(A) = 516 (got 516), nullity 65
+[PASS] CP04: dim ker A = 65 (got 65)
+[PASS] CP05: A K = 0 over Q
+[PASS] CP06: rank(K) = 65
+[PASS] CP07: |C1| = 129 (got 129)
+[PASS] CP08: rank_Q(P) = 60 (got 60), P is 129 x 65
+[PASS] CP09: N has 69 rows (got 69) and N P = 0
+[PASS] CP10: all N denominators prime to 10007 (lcm 3620870099683201039189993112931970935573225086348128010400)
+[PASS] CP11: |C2| = 1140, |C3| = 6820 (got 1140, 6820)
+[PASS] CP12: mod 10007: dim K1 = 60 (129-69), dim K2 = 163 (got 163)
+[PASS] CP13: mod 10007: K3 matrix 8280 x 6820 (8280 x 6820), rank 6814 (6814), dim K3 = 6 (6)
+[PASS] CP14: mod 1000003 (second prime): dim K3 = 6 <= 6
+[PASS] CP15: sanity: |B|=11,|B'|=11,|Ha|=18,|Hb|=18
+[PASS] CP16: N (B_i H_j) = 0 (product witness)
+[PASS] CP17: N (B_i H_j) = 0 (product witness)
+[PASS] CP18: N (B_i H_j) = 0 (product witness)
+[PASS] CP19: column B(0)Ha: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP20: column B(1)Ha: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP21: column B'Hb: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP22: column s1: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP23: column s2: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP24: column s3: N kills all 120 double slices exactly (bad slices 0)
+[PASS] CP25: 6x6 minor on the displayed rows = -16/5 (got -16/5)
+[PASS] CP26: upper-left det = -8/15 (got -8/15)
+[PASS] CP27: functional (5.2) vanishes on all six columns (values ['0', '0', '0', '0', '0', '0'])
+[PASS] CP28: 32-20u+3u^2 vanishes at u=4 and u=8/3 (and (u-4)(3u-8) = 3u^2-20u+32)
+[PASS] CP29: i=2 identity reads 2(m2 - m1) = 0, i.e. m2 = m1
+[PASS] CP30: i=4 identity with m2 = m1 equals 2*(m1 - 2 m3 + m4)
+[PASS] CP31: i=6 identity with m2 = m1 equals 9 m1 - 20 m3 + 15 m4
+[PASS] CP32: solution m1 = 5*m4, m3 = 3*m4 (stated m1 = m2 = 5 m4, m3 = 3 m4)
+[PASS] CP33: 0 = 3^4 m3 - 4*3^3*lam*m4 gives lam = 9/4 = 9/4, not an integer
+
+33/33 claims passed; RESULT: ALL PASS

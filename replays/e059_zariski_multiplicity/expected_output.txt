@@ -1,0 +1,17 @@
+[PASS] Z01: Lemma 3.1 + 9.1: 24 concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures 0)
+[PASS] Z02: in(f0,s): lowest-degree part of h(T^2+Y+O3, T) with deg T=1,deg Y=2 has degree 5 = 5 (no E term enters) and equals T*Y*(Y-T^2)
+[PASS] Z03: in(f1,s): lowest-degree part has degree 4 = 4 and equals Y*X^2
+[PASS] Z04: h(pi_0(u,w)) = u q1 q2 as polynomials
+[PASS] Z05: phi(0,w) = -w^4 (1+w^7)(1+2 w^7)
+[PASS] Z06: psi(0,w) = -w^4(1-w) + 2 w^19 (1-w)^2 exactly (so O(w^19))
+[PASS] Z07: q2(u,0) = u^2 (u-1)
+[PASS] Z08: q2(v w^2, w): w-degree<=4 part equals w^4 (v-1-v^2)
+[PASS] Z09: v^2 - v + 1 has discriminant -3 (simple roots, f = (1 +- i sqrt3)/2)
+[PASS] Z10: delta(d_i) = 8 + C(4,2)*2 + 2*4 = 28 = 28; mu = 2*delta - 6 + 1 = 51 = 51
+[PASS] Z11: mu(h) = 6 by exact truncated Jacobian algebra (got 6)
+[PASS] Z12: h_X = T(2X - 3T^2) and h_T = X^2 - 9 T^2 X + 10 T^4
+[PASS] Z13: 2c-3 and c^2-9c+10 have no common root (c=3/2 gives c^2-9c+10 = -5/4; and 2c-3 is linear)
+[PASS] Z14: Lefschetz rank/trace equations a+4b=6, a-b=1 have the unique solution [(2, 1)] -> dim ker(M-I)=2, dim ker Phi5 = 4
+[PASS] Z15: mu(d0) = 51 and mu(d1) = 51 by exact truncated Jacobian algebra, N=55,60 stable ({('d0', 55): 51, ('d0', 60): 51, ('d1', 55): 51, ('d1', 60): 51})
+
+15/15 claims passed; RESULT: ALL PASS

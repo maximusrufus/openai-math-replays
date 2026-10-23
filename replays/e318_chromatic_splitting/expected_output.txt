@@ -1,0 +1,17 @@
+[PASS] CH01: sl2: basis (E12, E21, H1), dim 3; d1 is 3 x 3
+[PASS] CH02: sl2: det d1 = 4 (stated 4); d1 = [[0, 0, -1], [2, 0, 0], [0, -2, 0]] vs printed [[0,0,-1],[2,0,0],[0,-2,0]]
+[PASS] CH03: sl2: d2 = 0 (C^2 -> C^3 = Lambda^3 of a 3-dimensional space, d2 has all zero entries)
+[PASS] CH04: sl3: dims of C^0..C^4 = [1, 8, 28, 56, 70] (stated 1, 8, 28, 56, 70)
+[PASS] CH05: sanity: d_{k+1} d_k = 0 for k = 0..2 on the constructed matrices
+[PASS] CH06: index sets: |R1|=|C1|=8, |R2|=|C2|=20, |R3|=|C3|=35=35
+[PASS] CH07: det d1[R1,C1] = -1 (stated -1)
+[PASS] CH08: |det d2[R2,C2]| = 2916 (stated 2916), signed value 2916
+[PASS] CH09: |det d3[R3,C3]| = 1024 (stated 1024), signed value 1024
+[PASS] CH10: sign conventions: signed minors (-1, 2916, 1024) vs stated (-1, 2916, 1024)
+[PASS] CH11: full ranks: rank d1 = 8 (8), rank d2 = 20 (20), rank d3 = 35 (35)
+[PASS] CH12: H^1 = 0, H^2 = 0, H^3 = 1 (stated 0, 0, 1)
+[PASS] CH13: trace cocycle omega(X,Y,Z) = tr(X[Y,Z]) is closed: d3 omega = 0
+[PASS] CH14: omega is not in im d2: rank [d2 | omega] = 21 (= 21 = 20 + 1)
+[PASS] CH15: omega(E12, E21, E11-E22) = 2 (stated 2)
+
+15/15 claims passed; RESULT: ALL PASS

@@ -22,4 +22,76 @@ jobs:
           diff -u expected_output.txt actual_output.txt
           sha256sum -c SHA256SUMS
       - name: Adversarial tests (perturbed input must fail)
-        run: python -m unittest discover -s tests -v
+        run: python -m unittest tests.test_adversarial -v
+
+  # Fast replays (each about 0.5 to 10 minutes). The two long ones are in the next job.
+  replays-fast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.14"]
+        entry:
+          - {slug: e059_zariski_multiplicity, script: replay_zariski.py, args: "", expected: expected_output.txt}
+          - {slug: e101_simplex_isotropic, script: replay_simplex.py, args: "--quick", expected: expected_output_quick.txt}
+          - {slug: e138_subset_sum, script: replay_subset_sum.py, args: "", expected: expected_output.txt}
+          - {slug: e153_bernoulli_non_pisot, script: replay_bernoulli.py, args: "", expected: expected_output.txt}
+          - {slug: e268_haldane_gap, script: replay_haldane.py, args: "", expected: expected_output.txt}
+          - {slug: e318_chromatic_splitting, script: replay_chromatic.py, args: "", expected: expected_output.txt}
+          - {slug: e352_calabi_flow, script: replay_calabi.py, args: "", expected: expected_output.txt}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned dependencies
+        run: python -m pip install -r replays/${{ matrix.entry.slug }}/requirements.txt
+      - name: Run replay and compare with expected output
+        working-directory: replays/${{ matrix.entry.slug }}
+        run: |
+          python ${{ matrix.entry.script }} ${{ matrix.entry.args }} > actual_output.txt
+          diff -u ${{ matrix.entry.expected }} actual_output.txt
+          sha256sum -c SHA256SUMS
+
+  # Slow replays: the Campana-Peternell finite elimination (about 6 to 10 minutes) and the full interval run for the
+  # simplex entry (about 10-15 minutes on one core).
+  replays-slow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.14"]
+        entry:
+          - {slug: e067_campana_peternell, script: replay_campana_peternell.py, args: "", expected: expected_output.txt}
+          - {slug: e101_simplex_isotropic, script: replay_simplex.py, args: "", expected: expected_output.txt}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned dependencies
+        run: python -m pip install -r replays/${{ matrix.entry.slug }}/requirements.txt
+      - name: Run replay and compare with expected output
+        working-directory: replays/${{ matrix.entry.slug }}
+        run: |
+          python ${{ matrix.entry.script }} ${{ matrix.entry.args }} > actual_output.txt
+          diff -u ${{ matrix.entry.expected }} actual_output.txt
+          sha256sum -c SHA256SUMS
+
+  adversarial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned dependencies (all replays)
+        run: python -m pip install python-flint==0.9.0 sympy==1.14.0 mpmath==1.3.0 numpy==2.5.4 scipy==1.18.1
+      - name: Adversarial tests (each perturbed input must fail)
+        run: python -m unittest tests.test_replays_adversarial -v

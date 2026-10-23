@@ -1,0 +1,49 @@
+[PASS] B01: (6.2): (t^2+t+1) p(t) = t^33 - t^32 - t^31 - t^30 - 1
+[PASS] B02: Table 1 parsed: 16 rows (16 expected: one real centre + 15 nonreal, conjugates implied)
+[PASS] B03: 31 disk centres (with conjugates): 31
+[PASS] B04: (A.1) |z| < 2 at all 31 centres (exact)
+[PASS] B05: (A.1) ||p'(z)||_inf > 1 at all 31 centres (exact Horner)
+[PASS] B06: (A.1) 2*10^35 ||p(z)||_1 < ||p'(z)||_inf at all 31 centres (exact Horner)
+[PASS] B07: distinct centres, pairwise distance > .01
+[PASS] B08: sum |p_j| 3^j = 1061131219257037 < 10^17
+[PASS] B09: 1.83928 < z_beta < 1.83929 (z_beta = 1.83929)
+[PASS] B10: exactly one nonreal centre (the 6th row zalpha) has |z|>1 (1 found)
+[PASS] B11: 1.00021 < |z_alpha|^2 < 1.00021 (got 1.00021)
+[PASS] B12: all other nonreal centres have |z| < .9939 (max |z|^2 = 0.987117 < 0.987837)
+[PASS] B13: independent mpmath roots (80 digits): each centre is within 1e-35 of a computed root
+[PASS] B14: exactly one real root (1) 
+[PASS] B15: beta = 1.83929 in (1.8392, 1.8393)
+[PASS] B16: exactly 3 roots outside the unit circle (beta, alpha, conj alpha): 3
+[PASS] B17: |alpha|^2 = 1.00021 in (1.00021, 1.00021) and 1/|alpha| = 0.999895 < 0.9999
+[PASS] B18: 28 remaining roots with max modulus 0.993538 < 0.994
+[PASS] B19: not Pisot argument arithmetic: 1.00021 * 0.994 < 1
+[PASS] B20: (6.4): log M = 0.609587 < log beta + 0.0002094 = 0.609587
+[PASS] B21: all roots simple (minimum root separation 0.1847)
+[PASS] B22: Cor 5.4 P1: irreducible over Q = True; one real root >1 in (1,2) = [1.72208]; nonreal pair on unit circle (2)
+[PASS] B23: Cor 5.4 P2: irreducible over Q = True; one real root >1 in (1,2) = [1.8832]; nonreal pair on unit circle (2)
+[PASS] B24: Cor 5.4: P1(x)/x^2 = y^2 - y - 3 and P2(x)/x^2 = y^2 - 2y - 1 for y = x + 1/x
+[PASS] B25: larger roots y1 = (1+sqrt13)/2, y2 = 1+sqrt2 lie in (2, 5/2)
+[PASS] B26: C0 = Laurent coefficients of 1/p: max |sum_j p_j C0(m-j) - delta_m0| = 2.9e-15 (m in [-300,300))
+[PASS] B27: sum_m C0(m) = 1/p(1) = -1 (got -1)
+[PASS] B28: (A.10) max_m |C0|, |C1| = 0.61646, 0.84610; paper: max_A,m |c_A(m)| in (.8460, .8462)
+[PASS] B29: (A.10) max_{m>=-20} |C0(m)| = 0.01726 < .018
+[PASS] B30: (A.10) |u_0| = 0.0085962, |u_1| = 0.0071309 < .0087
+[PASS] B31: P^-_00(0) = 1 exactly (E|Z|^2 = 1)
+[PASS] B32: |R| = 753 (stated 753)
+[PASS] B33: |X|+|Y|+sum|w| = 198442946/W (stated 198442946/W); < 0.199 = True
+[PASS] B34: sum over k<50 = 11816095/W (stated 11816095/W); total weight of small rows < .012 = True
+[PASS] B35: (A.14) 1e+09 * ec = 211815.54 in (211810, 211820)
+[PASS] B36: (A.15) 1e+09 * ev = 143920.88 in (143910, 143930)
+[PASS] B37: (A.16) 1e+09 * eT = 105303.79 in (105300, 105310)
+[PASS] B38: E Re(Z G) > 0.00021082 > .000210 and E|G|^2 < 0.000144119 < .000145 (error margins as in A.4)
+[PASS] B39: (A.19) T <= 0.0001055 < .000116 and sqrt(T) < .011
+[PASS] B40: number of nonzero rows with k<50 = 8 (stated 8)
+[PASS] B41: small-row weights W*w_ks vs the printed list: {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)} (stated {32: (0, -536932), 36: (1, 1265024), 37: (0, 331701), 39: (1, 47119), 40: (0, 1483338), 43: (0, 436861), 44: (1, 458216), 47: (1, 756904)}); max |diff| = 0
+[PASS] B42: (A.20) max |tan(pi f_v(m))| over the big rows (k>=50; the constant, type-1 and k<50 rows are the small rows), -70<=m<=0: 0.0543 <= .06
+[PASS] B43: (A.22) B2(2C0) = 0.010794 < .011 (paper's upper-rounded: .010862)
+[PASS] B44: (A.22) max B1 = 0.014655 < .015 (paper: .014732)
+[PASS] B45: (A.22) max B0 = 0.003155 < .0032 (paper: .003156)
+[PASS] B46: final: .000116*.011 + 2*.012*.011*.015 + .012^2*.0032 = 5.6968e-06 (stated .0000056968) < .000007
+[PASS] B47: (6.12)/(6.13) consequence: weights bound x* = .199; E L_i > .000210 > 0; E|G|^2 < .000145; E(Z^2 G^2) < .000007
+
+47/47 claims passed; RESULT: ALL PASS

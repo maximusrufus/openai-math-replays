@@ -1,0 +1,67 @@
+[PASS] H01: (4.9) f(1-(1-u)^3) = G(u) u^2 (symbolic)
+[PASS] H02: G(1/8) = 913952/117649 = 913952/117649 < 79/10
+[PASS] H03: row 1 of (4.18): u0 = 1/8 < 1/6, r = C u0 = 79/80 < 1, C(1-3u0) = 79/16 > 3, 3/(C(1-3u0)) = 48/79 < 1
+[PASS] H04: row 2: 9/(2(1-3u)^2) at u=1/100 = 45000/9409 < 5; G(1/100) <= that; r = 1/20; 3/(C(1-3u0)) = 60/97 < 1
+[PASS] H05: G(u) <= 9/(2(1-3u)^2) on a grid of u in (0, 1/100] (using 1-(1-u)^3 <= 3u)
+[PASS] H06: gap bounds: (4/105) log(80/79) = 0.00047919 and log(20)/784 = 0.00382109  (log(1/r)/b0 with r=79/80, b0=105/4 and r=1/20, b0=784)
+[PASS] H07: (5.1) sector formulas: I=(Z+3ZP+8ZC)/12, O=(Z+3ZP-4ZC)/12, N=(Z-ZP)/4 reproduce Z = I + 2 O + 3 N for J = I + 2 O: I+2O = (Z+3ZP)/4
+[PASS] H08: margins of mI, mO, mN over centre + 1e-05: ['19/12', '7/12', '3/4'] (stated 19/12, 7/12, 3/4 in units 1e-06)
+[PASS] H09: filter FI(U) - B_I = 0.03017 > 0.0301 (B_I = 65.715429); FN(V) - B_N = 0.34631 > 0.3463 (B_N = 1392.182656)
+[PASS] H10: filters strictly increasing beyond the endpoints: c1 > 0 and c0 + c1 x^2 > 0 at x = U and x = V
+[PASS] H11: U^10 < mI < 2 U^10 and V^10 < mN < 2 V^10
+[PASS] H12: (5.5) m^5 < D^2 with margin 0.001068 > 0.001068 (m = 1.160120)
+[PASS] H13: (5.5) p^5 < E^2 with margin 0.000433 > 0.000433 (p = 1.076306)
+[PASS] H14: (5.5) q >= 1 (q = 1.341303) and (q-1)^5 < Rq^2 with margin 4.73e-05 > 4.72e-05
+[PASS] H15: (5.5) D + 11E/12 ... : (D+11E)/12 = 1.22267 <= tau = 1.225 and (D+3E)/4 = 1.26400 <= tau0 = 1.264
+[PASS] H16: R(.88), R(.99), R(.998) = [0.1359, 0.0721, 0.068404] vs printed 0.1359, 0.0721, 0.068404 
+[PASS] H17: 1 - 0.99^4 - R(.88)^2 = 0.0209352 (printed 0.0209352, using R=.1359); 1 - 0.998^4 - R(.99)^2 = 0.00277762 (printed 0.00277762, using R=.0721)
+[PASS] H18: S(60,b) >= (1 + R(.998)/.998^2)^-2 = 0.875600 > .8756 > 7/8; T(120,b) >= (1+Rq)^-2 = 0.876057 > .8760 > 7/8
+[PASS] H19: B_J = 318605 (stated 318605), B_N = 48169.880699 (stated 48169.880699)
+[PASS] H20: FJ(vJ) - BJ = 180.038 > 180; FJ(-vJ) - BJ = 496888.976 > 496888; FN(+-vN) - BN = 654.286, 654.286 > 654
+[PASS] H21: Q(1+y) = 559 + 2902 y + 5165 y^2 + 3815 y^3 + 1000 y^4 and Q(-1-y) = 895 + 3978 y + 6275 y^2 + 4185 y^3 + 1000 y^4
+[PASS] H22: 12 - 394 r^2 + 1000 r^4 positive at vN = .872 and derivative 4r(1000 r^2 - 197) > 0 for r >= vN
+[PASS] H23: twelfth-moment upper bounds: J12 + 3e-05 = 1.06572 = mJ = 1.06572; N12 + 3e-05 = 0.278315 = mN = 0.278315
+[PASS] H24: mJ > ell^12 = 0.988066
+[PASS] H25: C(mJ, l^12, 6) + B(72) = 0.930655 < 1 with margin 0.06934 > 0.0693
+[PASS] H26: p0 = 0.0479158 < 0.047916 and q0 = 0.18152 < 0.181521
+[PASS] H27: six rounded updates reproduce the printed table exactly: [('151249/2500000', '433453/2500000'), ('343303/5000000', '1632381/10000000'), ('44601/625000', '361773/2500000'), ('632939/10000000', '1055161/10000000'), ('375793/10000000', '445941/10000000'), ('84513/10000000', '27493/5000000')]
+[PASS] H28: 1 - S(2304, 784) <= 84513/10^7 = 0.0084513 < 1/100 and 1 - T(4608, 784) <= 27493/(5e+06) = 0.0054986 < 1/100
+[PASS] H29: lengths and temperatures: 36 * 2^6 = 2304 and (49/4) * 2^6 = 784
+[PASS] H30: Cor 5.6 interface: p1 = 151249/2500000 is the printed bound on 1 - S(72, 49/2)
+[PASS] H31: matrices A_s built from Tables 1-2 and rules (C.4)-(C.5): D=26, 278 nonzero entries
+[PASS] H32: (C.6) difference-block dimensions [1, 8, 32, 80, 136, 162, 136, 80, 32, 8, 1] = [1, 8, 32, 80, 136, 162, 136, 80, 32, 8, 1], total 676 = 676
+[PASS] H33: Lemma C.1 on N=4 by brute force: |psi|^2 = 22975205960525898253776 equals V_4 = 22975205960525898253776; <psi|H|psi> = -137851234864097615402880 equals 4*U_4 = -137851234864097615402880
+[PASS] H34: N=72: V_N > 0 (390 digits); -c_N V <= 10^12 U < (-c_N+1) V with c_N = 1401482112601; U/V = -1.40148
+[PASS] H35: N=72: U_N/V_N < -a = -700741/500000 (variational bound E0 < -N a; margin 1.126e-07)
+[PASS] H36: N=120: V_N > 0 (650 digits); -c_N V <= 10^12 U < (-c_N+1) V with c_N = 1401482105174; U/V = -1.40148
+[PASS] H37: N=120: U_N/V_N < -a = -700741/500000 (variational bound E0 < -N a; margin 1.052e-07)
+[PASS] H38: reduced (gauge + momentum) spectra equal literal diagonalisation of (2.5) for n = 4, 5, 6 and theta = 0, pi, 2 pi/3 (max difference < 1e-10: True)
+[PASS] H39: Lemma 5.1, b = 21/2, n = 6, g = 1: replayed 8945303 vs table 8945303 (|difference| < 10 in units 1e-06)
+[PASS] H40: Lemma 5.1, b = 21/2, n = 6, g = P: replayed 346734 vs table 346734 (|difference| < 10 in units 1e-06)
+[PASS] H41: Lemma 5.1, b = 21/2, n = 6, g = C: replayed 939987 vs table 939987 (|difference| < 10 in units 1e-06)
+[PASS] H42: Lemma 5.1, b = 21/2, n = 8, g = 1: replayed 3741281 vs table 3741281 (|difference| < 10 in units 1e-06)
+[PASS] H43: Lemma 5.1, b = 21/2, n = 8, g = P: replayed 567167 vs table 567167 (|difference| < 10 in units 1e-06)
+[PASS] H44: Lemma 5.1, b = 21/2, n = 8, g = C: replayed 984108 vs table 984108 (|difference| < 10 in units 1e-06)
+[PASS] H45: Lemma 5.1, b = 21/2, n = 10, g = 1: replayed 2327547 vs table 2327547 (|difference| < 10 in units 1e-06)
+[PASS] H46: Lemma 5.1, b = 21/2, n = 10, g = P: replayed 721090 vs table 721090 (|difference| < 10 in units 1e-06)
+[PASS] H47: Lemma 5.1, b = 21/2, n = 10, g = C: replayed 1002613 vs table 1002613 (|difference| < 10 in units 1e-06)
+[PASS] H48: Lemma 5.1, b = 49/4, n = 4, g = 1: replayed 124885380 vs table 124885379 (|difference| < 30 in units 1e-06)
+[PASS] H49: Lemma 5.1, b = 49/4, n = 4, g = P: replayed 65757 vs table 65757 (|difference| < 30 in units 1e-06)
+[PASS] H50: Lemma 5.1, b = 49/4, n = 5, g = 1: replayed 2925 vs table 2925 (|difference| < 30 in units 1e-06)
+[PASS] H51: Lemma 5.1, b = 49/4, n = 5, g = P: replayed 2960743 vs table 2960742 (|difference| < 30 in units 1e-06)
+[PASS] H52: Lemma 5.1, b = 49/4, n = 6, g = 1: replayed 12870614 vs table 12870614 (|difference| < 30 in units 1e-06)
+[PASS] H53: Lemma 5.1, b = 49/4, n = 6, g = P: replayed 286600 vs table 286599 (|difference| < 30 in units 1e-06)
+[PASS] H54: Lemma 5.1, b = 49/4, n = 7, g = 1: replayed 54070 vs table 54069 (|difference| < 30 in units 1e-06)
+[PASS] H55: Lemma 5.1, b = 49/4, n = 7, g = P: replayed 1920415 vs table 1920414 (|difference| < 30 in units 1e-06)
+[PASS] H56: Lemma 5.1, b = 49/4, n = 8, g = 1: replayed 4639283 vs table 4639283 (|difference| < 30 in units 1e-06)
+[PASS] H57: Lemma 5.1, b = 49/4, n = 8, g = P: replayed 510141 vs table 510140 (|difference| < 30 in units 1e-06)
+[PASS] H58: Lemma 5.1, b = 49/4, n = 9, g = 1: replayed 195455 vs table 195455 (|difference| < 30 in units 1e-06)
+[PASS] H59: Lemma 5.1, b = 49/4, n = 9, g = P: replayed 1514847 vs table 1514846 (|difference| < 30 in units 1e-06)
+[PASS] H60: Lemma 5.1, b = 49/4, n = 10, g = 1: replayed 2654823 vs table 2654823 (|difference| < 30 in units 1e-06)
+[PASS] H61: Lemma 5.1, b = 49/4, n = 10, g = P: replayed 675420 vs table 675419 (|difference| < 30 in units 1e-06)
+[PASS] H62: Lemma 5.1, b = 49/4, n = 11, g = 1: replayed 377629 vs table 377629 (|difference| < 30 in units 1e-06)
+[PASS] H63: Lemma 5.1, b = 49/4, n = 11, g = P: replayed 1314544 vs table 1314544 (|difference| < 30 in units 1e-06)
+[PASS] H64: Lemma 5.1, b = 49/4, n = 12, g = 1: replayed 1900548 vs table 1900547 (|difference| < 30 in units 1e-06)
+[PASS] H65: Lemma 5.1, b = 49/4, n = 12, g = P: replayed 787405 vs table 787405 (|difference| < 30 in units 1e-06)
+
+65/65 claims passed; RESULT: ALL PASS
