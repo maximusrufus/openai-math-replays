@@ -85,7 +85,7 @@ Stated plainly:
 - For R(8,12) and R(9,11), the verdict VERIFIED rests on two exhaustive runs of the same colouring-bound solver under different
   vertex orders (different search trees, same bounding family) plus the K_s side by two methods; the SAT leg did not finish, so these two
   are verified by one algorithm family on the independent-set side.
-- Time caps were shorter than the 2 hours requested; whether more time would finish the TOO-LARGE rows is untested.
+- Time caps were well under 2 hours per method; whether more time would finish the TOO-LARGE rows is untested.
 - In both tables, a self-test with a planted independent set of size t (and, for the first table, a planted K_s) was detected on every graph.
 
 ## Note on R(4,15)
