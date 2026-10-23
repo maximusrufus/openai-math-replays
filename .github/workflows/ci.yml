@@ -1,0 +1,25 @@
+name: replay
+on:
+  push:
+  pull_request:
+jobs:
+  wall-d2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned dependencies
+        run: python -m pip install -r replays/wall_d2/requirements.txt
+      - name: Run replay and compare with expected output
+        working-directory: replays/wall_d2
+        run: |
+          python replay_wall.py > actual_output.txt
+          diff -u expected_output.txt actual_output.txt
+          sha256sum -c SHA256SUMS
+      - name: Adversarial tests (perturbed input must fail)
+        run: python -m unittest discover -s tests -v

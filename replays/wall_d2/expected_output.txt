@@ -1,0 +1,23 @@
+[PASS] C1: rho(x1,a1,x2,a2,s)=(-1,w,w^2,-1,1) sends every relator r1..r4 to 1  ({'r1': (1+0w), 'r2': (1+0w), 'r3': (1+0w), 'r4': (1+0w)})
+[PASS] C1b: the four displayed identities w=w^4, -1=(-1)^3, -1=(-1)^13, w^2=w^5
+[PASS] C2: rho(t1)=rho(x1^2)=1 and rho(t2)=rho(x2^3)=1 (so rho factors through G)
+[PASS] C3: rho(x1) = -1 != 1 (x1 nontrivial in G)
+[PASS] C4: s->1, others->0 respects all four relators and t1,t2 (G surjects onto Z)
+[PASS] C5: Fox matrix of (r1..r4) at rho (computed) equals matrix (15) of the paper entry by entry
+[PASS] C5b: closed-form entries (1-rho(a)^n, rho(x)-sum rho(a)^j) match the computed rows for r1,r2 (and the quoted sums 1, 1)
+[PASS] C5c: r3 row: a2-entry = -(sum of 13 alternating terms) = -1; r4 row: a1-entry = -(1+w), x2-entry = rho(s) = 1, s-entry = 1-rho(x2)
+[PASS] C6: rank of the 4x5 twisted Fox matrix over Q(w) is 4 (d2: C^4 -> C^5 injective)  (rank=4)
+[PASS] C6b: minor on columns (x1,a1,x2,s) = -4(1-w^2) exactly, and it is nonzero  (det=(-8+-4w))
+[PASS] C7a: d1 . d2 = 0 (the twisted chain complex of B is a complex)
+[PASS] C7b: twisted Betti numbers of B: h0=h1=h2=0 (hence chi(B)=0 consistent: 1-5+4)  (h0,h1,h2=0,0,0)
+[PASS] C7c: cell count: X has 1+5+(4+2)+2 = 14 cells and chi(X) = 1-5+6-2 = 0
+[PASS] C8a: t1 = x1^2 = a2^26 in P (certificate: R3 * a2^13 R3 a2^-13)
+[PASS] C8b: x2^3 a2 x2^-3 = a2^27 in P (27 = 3^3), hence [t2,a2] = t2 a2 t2^-1 a2^-1 = a2^26
+[PASS] C8c: x1^2 a1 x1^-2 = a1^16 in P (16 = 4^2), hence [t1,a1] = a1^15
+[PASS] C8d: s t2 s^-1 = s x2^3 s^-1 = a1^15 in P (certificate (R4 a1^5)^3)
+[PASS] C8e: arithmetic of Lemma 4.1: 4^2-1=15=3*5, 3^3-1=26=2*13, gcd(15,26)=1
+[PASS] C9: P^ab = Z + Z/6 (rank 1; torsion from Smith form) and G^ab = P^ab (adding 2*x1, 3*x2 changes nothing), as K perfect would imply  (SNF(P^ab) diag=[1, 1, 1, 6], SNF(G^ab) diag=[1, 1, 1, 6])
+[PASS] C10: with monodromy rho(g) z^phi(g) the Fox matrix has a nonzero 4x4 minor in Q(w)[z]  (rank 4 over C(z)); minor(x1,a1,x2,s) at z=1 equals -4(1-w^2)  (minor(x1,a1,x2,s)=-4*(w + 2); nonzero minors: 5 of 5)
+[PASS] C11: sanity (bounded, necessary condition only): in every homomorphism P -> AGL(1,p), p in {2,3,5,7}, t1 and t2 map to 1  (1568 homomorphisms examined (1254 with non-abelian image), 0 violations)
+
+21/21 claims passed; RESULT: ALL PASS
