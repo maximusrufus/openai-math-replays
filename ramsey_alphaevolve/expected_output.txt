@@ -1,0 +1,10 @@
+R(3,12)>=53  n=52  sha256=f255d720051434018a9095438816c06f2151196e7b9dbf82d55528d691bd84bf  K3-free(free/free)  I12-free(free/free)  VERIFIED by A+B
+R(3,13)>=61  n=60  sha256=d619f0bfed32af5e2fbc8c724d9c65dbf388a19d5647d20e7835b501bc03227a  K3-free(free/free)  I13-free(free/free)  VERIFIED by A+B
+R(3,15)>=74  n=73  sha256=ae94e8e6b3c1a26b90cf55d754c742074efd62449c8227a285bd288eb093d26e  K3-free(free/free)  I15-free(free/free)  VERIFIED by A+B
+R(3,17)>=93  n=92  sha256=71810667cd353e766375041e7968596e6ba7f67cd7d722158b09ab9a30e2336b  K3-free(free/free)  I17-free(free/free)  VERIFIED by A+B
+R(3,18)>=100  n=99  sha256=3e9d16e29111f3a2f25ae3b992235804c2612de2f6ada5570901d17ceedfca45  K3-free(free/free)  I18-free(free/free)  VERIFIED by A+B
+R(4,13)>=139  n=138  sha256=c50a55389d2c69b4cc7c1304639b2af67f16fd1a4a866870b87f907d41b69c54  K4-free(free/free)  I13-free(free/free)  VERIFIED by A+B
+R(4,14)>=148  n=147  sha256=00563a5e5e82289ffd1bf62ed2422a8c2865c11da9eaab1c101c4569a5ff2c8a  K4-free(free/free)  I14-free(free/free)  VERIFIED by A+B
+R(4,15)>=163  n=162  sha256=56f3cf76b87efe7d845b2bd59505d44638a9b49e04dfd33dcb4e86426cb4ec23  K4-free(free/free)  I15-free(free/free)  VERIFIED by A+B
+R(4,16)>=174  n=173  sha256=def3d53ed5879f8984434b93861b3a6a66049f2491fa04da212d704504b82f6f  K4-free(free/free)  I16-free(free/free)  VERIFIED by A+B
+ALL PASSED

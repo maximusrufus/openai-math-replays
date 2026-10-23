@@ -21,6 +21,7 @@ manuscript). This repository contains only independent re-computation code and i
 | 268 The periodic spin-one Haldane gap (2026-09-24) | [`replays/e268_haldane_gap/`](replays/e268_haldane_gap/) | 68 of 68 | thermal tables replayed by float64 diagonalisation (not a rigorous enclosure) |
 | 318 A rational obstruction to strong chromatic splitting at height three (2026-09-25) | [`replays/e318_chromatic_splitting/`](replays/e318_chromatic_splitting/) | 15 of 15 | only the Chevalley-Eilenberg certificate; no other finite computation was identified in the entry's manuscripts |
 | 352 A finite-time singularity of Calabi flow on projective space (2026-09-24) | [`replays/e352_calabi_flow/`](replays/e352_calabi_flow/) | 28 of 28 | the shooting estimate is checked at 8 sample points of the parameter square, not over the whole square |
+| Released Ramsey lower-bound graphs of arXiv 2603.09172 v2 (Google, 18 files) | [`ramsey_alphaevolve/`](ramsey_alphaevolve/) | 13 of 18 graphs verified by two methods (A, B); 2 more verified on the independent-set side by one solver family; 3 not verified (too large) | the graphs are Google's and are copied under Apache-2.0; only the stated clique / independent-set property is re-checked, not how the graphs were found; R(4,15): paper text says 159, released file is 163 (see README there) |
 | MUB N(6)=3 | separate, already public: [maximusrufus/mub6-certified-rerun](https://github.com/maximusrufus/mub6-certified-rerun) (not copied here) | see that repository | |
 
 ## Pinned source (Wall D(2))

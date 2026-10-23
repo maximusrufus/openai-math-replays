@@ -1,0 +1,9 @@
+The adjacency-matrix files in graphs/ are copied unmodified (file names changed only to remove spaces and
+comparison signs) from
+
+  https://github.com/google-research/google-research/tree/0d94f8c4d92678ce5f7a0eacae725f79174cfb03/ramsey_number_bounds/improved_bounds
+
+Copyright 2026 Google LLC
+Licensed under the Apache License, Version 2.0 (see LICENSE-APACHE-2.0 in this folder).
+
+The graphs, and the results they encode, are Google's. This folder contains only a checker and its output.

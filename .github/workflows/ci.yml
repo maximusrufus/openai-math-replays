@@ -86,6 +86,32 @@ jobs:
         working-directory: replays/${{ matrix.entry.slug }}
         run: python ${{ matrix.entry.script }} ${{ matrix.entry.args }} --selftest > /dev/null
 
+  ramsey-alphaevolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned dependencies
+        run: python -m pip install -r ramsey_alphaevolve/requirements.txt
+      - name: Graph files match SHA256SUMS
+        working-directory: ramsey_alphaevolve
+        run: sha256sum -c SHA256SUMS
+      - name: Self-test (planted K_s and I_t must be detected)
+        working-directory: ramsey_alphaevolve
+        run: python check_ramsey.py --selftest
+      - name: Re-check the nine smaller graphs and compare with expected output
+        working-directory: ramsey_alphaevolve
+        run: |
+          python check_ramsey.py --cheap > actual_output.txt
+          diff -u expected_output.txt actual_output.txt
+
   adversarial:
     runs-on: ubuntu-latest
     timeout-minutes: 45
