@@ -43,7 +43,7 @@ CASES = [
         "e153_bernoulli_non_pisot",
         "replay_bernoulli.py",
         "2*10^35 ||p(z)||_1 < ||p'(z)||_inf at all 31 centres",
-        "one polynomial coefficient + 1",
+        "one Table 1 centre shifted by 1e-30",
     ),
     (
         "e268_haldane_gap",

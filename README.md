@@ -90,6 +90,7 @@ routine. sympy is used only for the Smith normal form (C9) and the Laurent-polyn
 - C8 verifies identities of P through relator certificates; it does not decide the word problem of P.
 - Matrix (15) was read from the page image; the computed matrix agrees with it exactly.
 - Passing replays say the stated computations are consistent, nothing more.
+- The "stated constants" checks in e101 (S23–S27) and e352 (CF04) compare transcribed constants with a second copy in the same file; they guard against edits, not against a transcription error.
 - Dependencies are pinned (`sympy==1.14.0`, `mpmath==1.3.0`). The recorded output was produced with CPython 3.14.5;
   CI also runs 3.12.
 
