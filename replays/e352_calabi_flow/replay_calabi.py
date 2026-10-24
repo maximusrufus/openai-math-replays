@@ -216,9 +216,9 @@ def run():
     kmax = Fr(1, 10**8) * sum(abs(x) for x in MAT[0]) * R_  # row sum of |entries| times R
     dmax = Fr(1, 10**8) * sum(abs(x) for x in MAT[1]) * R_
     chk(
-        f"(3.7) |k-k0| <= {float(kmax):.5e} (stated 4.44605e-13) and |d-d0| <= {float(dmax):.5e} (stated 5.40506e-12) < .011 R",
-        abs(float(kmax) - 4.44605e-13) < 1e-17
-        and abs(float(dmax) - 5.40506e-12) < 1e-17
+        f"(3.7) |k-k0| <= {float(kmax):.5e} (stated 4.44605e-13) and |d-d0| <= {float(dmax):.5e} (stated 5.40506e-12) < .011 R; exact values lie within half a unit of the last printed digit",
+        abs(kmax - Fr("4.44605e-13")) <= Fr(1, 2 * 10**18)  # exact decimal interval [v - 1/2 ulp, v + 1/2 ulp], ulp = 1e-18
+        and abs(dmax - Fr("5.40506e-12")) <= Fr(1, 2 * 10**17)  # ulp = 1e-17
         and dmax < Fr(11, 1000) * R_,
     )
     # --- Lemma 3.3

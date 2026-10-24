@@ -239,10 +239,11 @@ def main(perturb_matrix=False):
     phi = {"x1": 0, "a1": 0, "x2": 0, "a2": 0, "s": 1}
     claim(
         "C4",
-        "s->1, others->0 respects all four relators and t1,t2 (G surjects onto Z)",
+        "s->1, others->0 respects all four relators and t1,t2, and the images of the generators have gcd 1 (so the image is all of Z: G surjects onto Z)",
         all(sum(phi[g] * e for g, e in w) == 0 for w in RELS.values())
         and 2 * phi["x1"] == 0
-        and 3 * phi["x2"] == 0,
+        and 3 * phi["x2"] == 0
+        and gcd(*phi.values()) == 1,
     )
 
     # C5: Fox matrix, computed by the left-to-right engine, equals the paper's (15)

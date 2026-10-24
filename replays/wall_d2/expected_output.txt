@@ -1,9 +1,9 @@
-checker-sha256: 2dc4e17e280cd6ad7f5ba4c9dc34c0f71bf3930d3ca687e89a666f2a8006dfee
+checker-sha256: ece4f9591e9e2b4e372719bb20a2e29a0c6c22b68da70cdbe17d9ed0ee2abe0b
 [PASS] C1: rho(x1,a1,x2,a2,s)=(-1,w,w^2,-1,1) sends every relator r1..r4 to 1  ({'r1': (1+0w), 'r2': (1+0w), 'r3': (1+0w), 'r4': (1+0w)})
 [PASS] C1b: the four displayed identities w=w^4, -1=(-1)^3, -1=(-1)^13, w^2=w^5
 [PASS] C2: rho(t1)=rho(x1^2)=1 and rho(t2)=rho(x2^3)=1 (so rho factors through G)
 [PASS] C3: rho(x1) = -1 != 1 (x1 nontrivial in G)
-[PASS] C4: s->1, others->0 respects all four relators and t1,t2 (G surjects onto Z)
+[PASS] C4: s->1, others->0 respects all four relators and t1,t2, and the images of the generators have gcd 1 (so the image is all of Z: G surjects onto Z)
 [PASS] C5: Fox matrix of (r1..r4) at rho (computed) equals matrix (15) of the paper entry by entry
 [PASS] C5b: closed-form entries (1-rho(a)^n, rho(x)-sum rho(a)^j) match the computed rows for r1,r2 (and the quoted sums 1, 1)
 [PASS] C5c: r3 row: a2-entry = -(sum of 13 alternating terms) = -1; r4 row: a1-entry = -(1+w), x2-entry = rho(s) = 1, s-entry = 1-rho(x2)
