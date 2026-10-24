@@ -5,7 +5,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C1: rho(x1,a1,x2,a2,s)=(-1,w,w^2,-1,1) sends every relator r1..r4 to 1  ({'r1': (-1+-1w), 'r2': (1+0w), 'r3': (1+0w), 'r4': (1+0w)})",
-  "secs": 16.230724334716797
+  "secs": 16.47780179977417
  },
  {
   "id": "wall_d2-02",
@@ -13,7 +13,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C1: rho(x1,a1,x2,a2,s)=(-1,w,w^2,-1,1) sends every relator r1..r4 to 1  ({'r1': (1+0w), 'r2': (1+0w), 'r3': (-1+0w), 'r4': (1+0w)})",
-  "secs": 15.832581520080566
+  "secs": 15.97374439239502
  },
  {
   "id": "wall_d2-03",
@@ -21,7 +21,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C1: rho(x1,a1,x2,a2,s)=(-1,w,w^2,-1,1) sends every relator r1..r4 to 1  ({'r1': (1+0w), 'r2': (1+0w), 'r3': (1+0w), 'r4': (0+1w)})",
-  "secs": 16.04639172554016
+  "secs": 16.153968811035156
  },
  {
   "id": "wall_d2-04",
@@ -29,7 +29,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C5: Fox matrix of (r1..r4) at rho (computed) equals matrix (15) of the paper entry by entry",
-  "secs": 15.919363737106323
+  "secs": 15.8218514919281
  },
  {
   "id": "wall_d2-05",
@@ -37,7 +37,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C5: Fox matrix of (r1..r4) at rho (computed) equals matrix (15) of the paper entry by entry",
-  "secs": 15.963590145111084
+  "secs": 15.717488050460815
  },
  {
   "id": "wall_d2-06",
@@ -45,15 +45,15 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] C6b: minor on columns (x1,a1,x2,s) = -4(1-w^2) exactly, and it is nonzero  (det=(-8+-4w))",
-  "secs": 15.900939702987671
+  "secs": 16.273667573928833
  },
  {
   "id": "wall_d2-07",
   "replay": "wall_d2",
-  "status": "survived",
-  "exit": 0,
-  "detail": "",
-  "secs": 15.958290576934814
+  "status": "killed-hard",
+  "exit": 1,
+  "detail": "[FAIL] C4: s->1, others->0 respects all four relators and t1,t2, and the images of the generators have gcd 1 (so the image is all of Z: G surjects onto Z)",
+  "secs": 16.33136749267578
  },
  {
   "id": "e059-01",
@@ -61,7 +61,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z07: phi(0,w) = -w^4 (1+w^7)(1+2 w^7)",
-  "secs": 21.79697871208191
+  "secs": 22.537867784500122
  },
  {
   "id": "e059-02",
@@ -69,7 +69,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z05: d1 = h(pi_1(x,w)) = psi (x - psi^2)(x - 2 psi^2) with h(X,T) = T (X - T^2)(X - 2 T^2) at (X,T) = (x,psi)",
-  "secs": 21.673198699951172
+  "secs": 21.857492923736572
  },
  {
   "id": "e059-03",
@@ -77,7 +77,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z07: phi(0,w) = -w^4 (1+w^7)(1+2 w^7)",
-  "secs": 21.45544195175171
+  "secs": 21.871094703674316
  },
  {
   "id": "e059-04",
@@ -85,7 +85,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z17: mu(d0) = 51 and mu(d1) = 51 by exact truncated Jacobian algebra, N=55,60 stable ({('d0', 5): 15, ('d0', 6): 19, ('d1', 5): 15, ('d1', 6): 19})",
-  "secs": 1.6643774509429932
+  "secs": 1.7329049110412598
  },
  {
   "id": "e059-05",
@@ -93,7 +93,7 @@
   "status": "survived",
   "exit": 0,
   "detail": "",
-  "secs": 21.9120991230011
+  "secs": 22.661253213882446
  },
  {
   "id": "e059-06",
@@ -101,7 +101,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z08: psi(0,w) = -w^4(1-w) + 2 w^19 (1-w)^2 exactly (so O(w^19))",
-  "secs": 21.75302290916443
+  "secs": 22.1292405128479
  },
  {
   "id": "e059-07",
@@ -109,7 +109,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z01: Lemma 3.1 + 9.1: 24 concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures 14)",
-  "secs": 21.66081142425537
+  "secs": 22.470784187316895
  },
  {
   "id": "e059-08",
@@ -117,7 +117,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z01: Lemma 3.1 + 9.1: 24 concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures 0)",
-  "secs": 21.84890389442444
+  "secs": 22.309625148773193
  },
  {
   "id": "e059-09",
@@ -125,7 +125,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] Z01: Lemma 3.1 + 9.1: 24 concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures 3)",
-  "secs": 21.316563606262207
+  "secs": 22.208384037017822
  },
  {
   "id": "e067-01",
@@ -133,7 +133,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP16: N (B_i H_j) = 0 (product witness)",
-  "secs": 233.36133575439453
+  "secs": 227.1419334411621
  },
  {
   "id": "e067-02",
@@ -141,7 +141,7 @@
   "status": "survived",
   "exit": 0,
   "detail": "",
-  "secs": 232.64287662506104
+  "secs": 226.09711408615112
  },
  {
   "id": "e067-03",
@@ -149,7 +149,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP17: N (B_i H_j) = 0 (product witness)",
-  "secs": 233.63911294937134
+  "secs": 226.85997700691223
  },
  {
   "id": "e067-04",
@@ -157,7 +157,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP18: N (B_i H_j) = 0 (product witness)",
-  "secs": 234.35901045799255
+  "secs": 225.95903825759888
  },
  {
   "id": "e067-05",
@@ -165,7 +165,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP22: column s1: N kills all 120 double slices exactly (bad slices 1)",
-  "secs": 234.02582263946533
+  "secs": 223.94380927085876
  },
  {
   "id": "e067-06",
@@ -173,7 +173,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP23: column s2: N kills all 120 double slices exactly (bad slices 1)",
-  "secs": 232.89361429214478
+  "secs": 236.30979681015015
  },
  {
   "id": "e067-07",
@@ -181,7 +181,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "peternell.py\", line 236, in dense_rows\r\n    assert sum(a * b for a, b in zip(e, W)) == 9, \"row of wrong weight\"\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: row of wrong weight\r\n",
-  "secs": 0.2995789051055908
+  "secs": 0.2574653625488281
  },
  {
   "id": "e067-08",
@@ -189,7 +189,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CP13: mod 10007: K3 matrix 8280 x 6820 (8280 x 6820), rank 6814 (6814), dim K3 = 6 (6)",
-  "secs": 231.8480396270752
+  "secs": 234.30618953704834
  },
  {
   "id": "e101-01",
@@ -197,7 +197,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S15: Lemma 4.1 (4.3)+(4.4) on R1 (-2.0, -1.0)  witness (-2.0, -1.99902) [nodes 1]",
-  "secs": 23.190796613693237
+  "secs": 21.43838405609131
  },
  {
   "id": "e101-02",
@@ -205,7 +205,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S23: exact: stated constants: alpha = 3/40, beta = 7/25, c = 3/2, eps = 3/20, kappa = 49/100",
-  "secs": 24.51547145843506
+  "secs": 22.35272216796875
  },
  {
   "id": "e101-03",
@@ -213,7 +213,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S25: exact: stated constants of (4.2): .67, .25, .46",
-  "secs": 25.03912115097046
+  "secs": 22.726720333099365
  },
  {
   "id": "e101-04",
@@ -221,7 +221,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S25: exact: stated constants of (4.2): .67, .25, .46",
-  "secs": 23.857186555862427
+  "secs": 22.48008704185486
  },
  {
   "id": "e101-05",
@@ -229,7 +229,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S25: exact: stated constants of (4.2): .67, .25, .46",
-  "secs": 24.317359447479248
+  "secs": 23.140137672424316
  },
  {
   "id": "e101-06",
@@ -237,7 +237,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S16: Lemma 4.1 (4.3)+(4.4) on U1 (-1.0, 0.6)  witness (0.545189, 0.545189, 'undecided') [nodes 117]",
-  "secs": 24.319905757904053
+  "secs": 22.7607262134552
  },
  {
   "id": "e101-07",
@@ -245,7 +245,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S08: Lemma 2.2 (2.5)-(2.6): dlogM/dlogq >= m0 on P1  witness (-3.0, -2.99902) [nodes 1]",
-  "secs": 26.555033683776855
+  "secs": 23.53054141998291
  },
  {
   "id": "e101-08",
@@ -253,7 +253,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] S24: exact: stated constants: Q = [[.43, .13], [.13, 2.72]] (Proposition 3.6)",
-  "secs": 26.542691707611084
+  "secs": 23.178595066070557
  },
  {
   "id": "e138-01",
@@ -261,7 +261,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS02: |r| <= sum |r_j| = 2.433 and |s| <= 4.010",
-  "secs": 0.834296703338623
+  "secs": 0.7919960021972656
  },
  {
   "id": "e138-02",
@@ -269,7 +269,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS02: |r| <= sum |r_j| = 2.433 and |s| <= 4.010",
-  "secs": 0.8642222881317139
+  "secs": 0.7925481796264648
  },
  {
   "id": "e138-03",
@@ -277,7 +277,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS03: Zhat_f, Zhat_g, Zhat_f,kappa, Zhat_g,kappa within 5e-07 of the stated centres ([1.19636, 1.28774, 1.21113, 1.30386])",
-  "secs": 0.9519228935241699
+  "secs": 0.7752091884613037
  },
  {
   "id": "e138-04",
@@ -285,7 +285,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS01: Delta = eta - tau = 0.02776 and Gamma = 2 tau - eta = 0.46220 (exact decimal arithmetic)",
-  "secs": 1.258507251739502
+  "secs": 0.799241304397583
  },
  {
   "id": "e138-05",
@@ -293,7 +293,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS03: Zhat_f, Zhat_g, Zhat_f,kappa, Zhat_g,kappa within 5e-07 of the stated centres ([1.19636, 1.28774, 1.211079, 1.30381])",
-  "secs": 2.039689302444458
+  "secs": 0.7716517448425293
  },
  {
   "id": "e138-06",
@@ -301,7 +301,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS20: 84/53 > 1.5848",
-  "secs": 1.962681770324707
+  "secs": 0.8057782649993896
  },
  {
   "id": "e138-07",
@@ -309,7 +309,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS26: exponent sum .249 + .25 = .499 < .5",
-  "secs": 1.2029950618743896
+  "secs": 0.7614147663116455
  },
  {
   "id": "e138-08",
@@ -317,7 +317,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] SS05: Table 1 (nodes 0..32): max |ours - stated| = ['0.0001', '4.97e-08', '4.88e-06', '4.95e-06'] vs allowed ['4e-06', '2e-05', '0.0004', '0.0004']",
-  "secs": 0.8379743099212646
+  "secs": 0.8034934997558594
  },
  {
   "id": "e153-01",
@@ -325,7 +325,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B01: (6.2): (t^2+t+1) p(t) = t^33 - t^32 - t^31 - t^30 - 1",
-  "secs": 2.228182554244995
+  "secs": 2.1882271766662598
  },
  {
   "id": "e153-02",
@@ -333,7 +333,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B06: (A.1) 2*10^35 ||p(z)||_1 < ||p'(z)||_inf at all 31 centres (exact Horner)",
-  "secs": 46.15315580368042
+  "secs": 47.10387849807739
  },
  {
   "id": "e153-03",
@@ -341,7 +341,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B06: (A.1) 2*10^35 ||p(z)||_1 < ||p'(z)||_inf at all 31 centres (exact Horner)",
-  "secs": 47.66771388053894
+  "secs": 49.08708691596985
  },
  {
   "id": "e153-04",
@@ -349,7 +349,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B19: not Pisot argument arithmetic: 1.00021 * 0.994 < 1",
-  "secs": 47.644317388534546
+  "secs": 50.06766080856323
  },
  {
   "id": "e153-05",
@@ -357,7 +357,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B29: (A.10) max_{m>=-20} |C0(m)| = 0.01726 < .018",
-  "secs": 46.17272233963013
+  "secs": 49.446258544921875
  },
  {
   "id": "e153-06",
@@ -365,7 +365,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] B09: 1.83928 < z_beta < 1.83929 (z_beta = 1.83929)",
-  "secs": 45.25004982948303
+  "secs": 49.54459261894226
  },
  {
   "id": "e268-01",
@@ -373,7 +373,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H36: N=72: V_N > 0 (390 digits); -c_N V <= 10^12 U < (-c_N+1) V with c_N = 1401482112601; U/V = -1.40148",
-  "secs": 454.38970470428467
+  "secs": 448.61398696899414
  },
  {
   "id": "e268-02",
@@ -381,7 +381,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H45: Lemma 5.1, b = 21/2, n = 8, g = 1: replayed 3741281 vs table 3741381 (|difference| < 10 in units 1e-06)",
-  "secs": 453.58138275146484
+  "secs": 444.55292415618896
  },
  {
   "id": "e268-03",
@@ -389,7 +389,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H42: Lemma 5.1, b = 21/2, n = 6, g = 1: replayed 8945303 vs table 8945313 (|difference| < 10 in units 1e-06)",
-  "secs": 456.1664528846741
+  "secs": 442.2646610736847
  },
  {
   "id": "e268-04",
@@ -397,7 +397,7 @@
   "status": "killed-soft",
   "exit": 0,
   "detail": "differing line: '[PASS] H51: Lemma 5.1, b = 49/4, n = 4, g = 1: replayed 124885380 vs table 124885409 (|difference| < 30 in units 1e-06)'",
-  "secs": 461.74098443984985
+  "secs": 452.0558907985687
  },
  {
   "id": "e268-05",
@@ -405,7 +405,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H42: Lemma 5.1, b = 21/2, n = 6, g = 1: replayed 8944176 vs table 8945303 (|difference| < 10 in units 1e-06)",
-  "secs": 460.99539065361023
+  "secs": 449.9101462364197
  },
  {
   "id": "e268-06",
@@ -413,7 +413,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H06: (4.18): the parameter rows (n0, b0, u0, C, r = C u0) are (60, 105/4, 1/8, 79/10, 79/80) and (2304, 784, 1/100, 5, 1/20)",
-  "secs": 472.82354044914246
+  "secs": 473.85550928115845
  },
  {
   "id": "e268-07",
@@ -421,7 +421,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] H11: filter FI(U) - B_I = 0.03017 > 0.0301 (B_I = 65.715429); FN(V) - B_N = -51.15204 > 0.3463 (B_N = 1392.182656)",
-  "secs": 472.044588804245
+  "secs": 469.7705407142639
  },
  {
   "id": "e318-01",
@@ -429,7 +429,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH07: det d1[R1,C1] = 1 (stated -1)",
-  "secs": 0.2360670566558838
+  "secs": 0.22973966598510742
  },
  {
   "id": "e318-02",
@@ -437,7 +437,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[PASS] CH06: index sets: |R1|=|C1|=8, |R2|=|C2|=20, |R3|=|C3|=35=35",
-  "secs": 0.24122405052185059
+  "secs": 0.2652764320373535
  },
  {
   "id": "e318-03",
@@ -445,7 +445,7 @@
   "status": "survived",
   "exit": 0,
   "detail": "",
-  "secs": 0.21182966232299805
+  "secs": 0.2189023494720459
  },
  {
   "id": "e318-04",
@@ -453,7 +453,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH08: |det d2[R2,C2]| = 0 (stated 2916), signed value 0",
-  "secs": 0.2335681915283203
+  "secs": 0.2115159034729004
  },
  {
   "id": "e318-05",
@@ -461,7 +461,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH09: |det d3[R3,C3]| = 512 (stated 1024), signed value 512",
-  "secs": 0.21733951568603516
+  "secs": 0.22705817222595215
  },
  {
   "id": "e318-06",
@@ -469,7 +469,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH02: sl2: det d1 = 4 (stated 4); d1 = [[0, 0, -1], [2, 0, 0], [0, -2, 0]] vs printed [[0,0,-1],[2,0,0],[0,-2,0]]",
-  "secs": 0.22855257987976074
+  "secs": 0.2215573787689209
  },
  {
   "id": "e318-07",
@@ -477,7 +477,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH15: omega(E12, E21, E11-E22) = 2 (stated 2)",
-  "secs": 0.2471942901611328
+  "secs": 0.21029138565063477
  },
  {
   "id": "e318-08",
@@ -485,7 +485,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CH12: H^1 = 0, H^2 = 0, H^3 = 1 (stated 0, 0, 1)",
-  "secs": 0.21697759628295898
+  "secs": 0.21763277053833008
  },
  {
   "id": "e352-01",
@@ -493,7 +493,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF06: alpha^2 - 3 beta = -57/3136 = -453/25088 < 0 (D0 increasing on R)",
-  "secs": 49.87738537788391
+  "secs": 51.78229761123657
  },
  {
   "id": "e352-02",
@@ -501,7 +501,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF07: D0(-1.08659) = -18054782447647/343000000000000000 = -17566501197647/343000000000000000 < 0 and D0(-1.08655) = 183716333137/2744000000000000 = 187622583137/2744000000000000 > 0",
-  "secs": 48.931175231933594
+  "secs": 54.09503221511841
  },
  {
   "id": "e352-03",
@@ -509,7 +509,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF04: transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56",
-  "secs": 45.38103222846985
+  "secs": 49.44429588317871
  },
  {
   "id": "e352-04",
@@ -517,7 +517,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF04: transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56",
-  "secs": 45.12756109237671
+  "secs": 48.18739080429077
  },
  {
   "id": "e352-05",
@@ -525,7 +525,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF04: transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56",
-  "secs": 46.22978329658508
+  "secs": 46.373355865478516
  },
  {
   "id": "e352-06",
@@ -533,23 +533,23 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF04: transcription of (3.6): k0 = -.094617116666041, d0 = .400682721856639, matrix [[25190, -63731], [721855, 359157]], R = 5e-10, S0 = 56",
-  "secs": 46.83782172203064
+  "secs": 45.865448236465454
  },
  {
   "id": "e352-07",
   "replay": "e352",
-  "status": "survived",
-  "exit": 0,
-  "detail": "",
-  "secs": 47.135838747024536
+  "status": "killed-hard",
+  "exit": 1,
+  "detail": "[FAIL] CF05: (3.7) |k-k0| <= 4.44605e-13 (stated 4.44605e-13) and |d-d0| <= 5.40506e-12 (stated 5.40506e-12) < .011 R; exact values lie within half a unit of the last printed digit",
+  "secs": 46.574822187423706
  },
  {
   "id": "e352-08",
   "replay": "e352",
   "status": "killed-hard",
   "exit": 1,
-  "detail": "[FAIL] CF05: (3.7) |k-k0| <= 4.44605e-13 (stated 4.44605e-13) and |d-d0| <= 5.40506e-12 (stated 5.40506e-12) < .011 R",
-  "secs": 55.32081747055054
+  "detail": "[FAIL] CF05: (3.7) |k-k0| <= 4.44605e-13 (stated 4.44605e-13) and |d-d0| <= 5.40506e-12 (stated 5.40506e-12) < .011 R; exact values lie within half a unit of the last printed digit",
+  "secs": 53.790897607803345
  },
  {
   "id": "e352-09",
@@ -557,7 +557,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "[FAIL] CF06: alpha^2 - 3 beta = -453/25088 = -453/25088 < 0 (D0 increasing on R)",
-  "secs": 60.474557638168335
+  "secs": 60.70692706108093
  },
  {
   "id": "ramsey_alphaevolve-01",
@@ -565,7 +565,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 91.51734280586243
+  "secs": 92.50201368331909
  },
  {
   "id": "ramsey_alphaevolve-02",
@@ -573,7 +573,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 101.10184693336487
+  "secs": 103.91454339027405
  },
  {
   "id": "ramsey_alphaevolve-03",
@@ -581,7 +581,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 102.64353513717651
+  "secs": 108.99660873413086
  },
  {
   "id": "ramsey_alphaevolve-04",
@@ -589,7 +589,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 106.51863670349121
+  "secs": 106.92550706863403
  },
  {
   "id": "ramsey_alphaevolve-05",
@@ -597,7 +597,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 108.68924450874329
+  "secs": 104.55390930175781
  },
  {
   "id": "ramsey_alphaevolve-06",
@@ -605,7 +605,7 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 106.6642689704895
+  "secs": 101.16056394577026
  },
  {
   "id": "ramsey_alphaevolve-07",
@@ -613,6 +613,6 @@
   "status": "killed-hard",
   "exit": 1,
   "detail": "FAILURES PRESENT",
-  "secs": 94.95411372184753
+  "secs": 91.64429020881653
  }
 ]

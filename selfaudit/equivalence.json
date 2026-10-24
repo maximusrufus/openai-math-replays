@@ -5,8 +5,8 @@
   "e318-03": "Rows 52 and 53 of the d2 matrix are identical (both have the single entry 3 in column 22; checked by importing ce_matrices(3) and comparing the rows), so replacing row index 52 by 53 in R2 gives the same submatrix and the same determinant."
  },
  "notes": {
-  "wall_d2-07": "non-equivalent survivor. The check 'G surjects onto Z' only tests that the assignment kills the four relators and t1, t2; it does not test that the image of s generates Z, so s -> 2 passes. Finding about the checker (a stated claim whose surjectivity part is not asserted).",
-  "e352-07": "non-equivalent survivor. The stated value 4.44605e-13 is compared with tolerance 1e-17, ten times the last printed digit's unit (1e-18); a stated value off by one unit in its last printed digit is accepted. Finding about the checker (tolerance looser than the printed precision). The mutant with ten units (e352-08) is killed.",
+  "wall_d2-07": "found by the self-audit, fixed in ee3a574 (claim C4 now also asserts gcd of the generator images = 1); killed in the re-run. Original finding: the surjectivity part of the claim was not asserted, so s -> 2 passed.",
+  "e352-07": "found by the self-audit, fixed in ee3a574 (claim CF05 now compares with the exact decimal interval of half a unit of the last printed digit); killed in the re-run. Original finding: tolerance 1e-17 on a 6-digit stated value accepted a value off by one unit in the last printed digit.",
   "e268-04": "killed (soft). The boundary mutant moves the table centre by exactly the tolerance (30), but the replayed value already sits 1 above the printed centre, so the mutated difference is 29 and the check |diff| < 30 passes; the replay exits 0 with all claims passing and only the text differs. The mutant is mis-specified as 'past the constraint' (it is one unit inside it); kept in the totals.",
   "e059-05": "also mis-specified as a mutant (see the equivalence argument)."
  }

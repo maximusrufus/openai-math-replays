@@ -229,15 +229,15 @@ Question: does each checker reject a wrong input? Rules were written down before
 Each mutant changes one stated value or one data element (or one edge of a graph), or moves a stated value by one unit past an
 inequality, in a temporary copy of the replay; it counts as killed if the replay exits nonzero or its output differs from the expected output.
 
-Result ([`selfaudit/RESULT.md`](selfaudit/RESULT.md)): 77 mutants over the 10 replays, 72 killed (71 by a nonzero exit, 1 by an output
-difference only), 5 survivors. Of the survivors, 3 are equivalent (argued in writing in RESULT.md) and 2 are findings about our
-checkers: the claim that the Wall group surjects onto Z does not assert surjectivity (`wall_d2`), and the stated constant 4.44605e-13 in the
-Calabi-flow replay is accepted with a tolerance of 1e-17, so a value off by one unit in its last printed digit passes (`e352`).
-The checkers were not changed.
+Result ([`selfaudit/RESULT.md`](selfaudit/RESULT.md)): 77 mutants over the 10 replays, 74 killed (73 by a nonzero exit, 1 by an output
+difference only), 3 survivors, all equivalent (argued in writing in RESULT.md). The initial run had 5 survivors; 2 were findings about our
+checkers and are fixed (commit ee3a574): the claim that the Wall group surjects onto Z did not assert surjectivity (`wall_d2`), and the stated
+constant 4.44605e-13 in the Calabi-flow replay was accepted with a tolerance of 1e-17, so a value off by one unit in its last printed digit
+passed (`e352`). Both mutants are killed after the fixes. Amendment history: [`selfaudit/PREREG_AMENDMENTS.md`](selfaudit/PREREG_AMENDMENTS.md).
 
 | replay | killed / total | survivors |
 |---|---|---|
-| wall_d2 | 6 / 7 | 1 (finding) |
+| wall_d2 | 7 / 7 | none |
 | e059 | 8 / 9 | 1 (equivalent) |
 | e067 | 7 / 8 | 1 (equivalent) |
 | e101 | 8 / 8 | none |
@@ -245,7 +245,7 @@ The checkers were not changed.
 | e153 | 6 / 6 | none |
 | e268 | 7 / 7 | none |
 | e318 | 7 / 8 | 1 (equivalent) |
-| e352 | 8 / 9 | 1 (finding) |
+| e352 | 9 / 9 | none |
 | ramsey_alphaevolve | 7 / 7 | none |
 
 Re-run (about 30 minutes on 4 cores; the e101 mutants use the `--quick` subset, ramsey_alphaevolve uses `--cheap`):
