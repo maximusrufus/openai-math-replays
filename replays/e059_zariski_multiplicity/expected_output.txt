@@ -1,3 +1,4 @@
+checker-sha256: c5475c8b20e078b0b472565267ab4dbf80b1d542f701a58458f95cb98a0199dc
 [PASS] Z01: Lemma 3.1 + 9.1: 24 concrete (r, n0) instances (r=4..11, 3 each; r>=4 needed for 2^(r-1)>5), all properties hold (failures 0)
 [PASS] Z02: in(f0,s): lowest-degree part of h(T^2+Y+O3, T) with deg T=1,deg Y=2 has degree 5 = 5 (no E term enters) and equals T*Y*(Y-T^2)
 [PASS] Z03: in(f1,s): lowest-degree part has degree 4 = 4 and equals Y*X^2

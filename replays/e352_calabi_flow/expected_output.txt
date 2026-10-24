@@ -1,3 +1,4 @@
+checker-sha256: f018019bbed0ac5a8567ea8e5e6ec1452a808235d3289e21a36fc1673415cae9
 [PASS] CF01: Q(D) = D^3 + 18 D^2 + 71 D - 90 (got D**3 + 18*D**2 + 71*D - 90)
 [PASS] CF02: (3.5) coefficients: s^3 p''' : 1, s^2 p'' : 30 (=30), s p' : 751/4 (=751/4), constant -1215/4 (=-1215/4)
 [PASS] CF03: y = c (16/27)^(1/2) s^(3/2) from s = (27/16)^(1/3) (y/c)^(2/3): y^2/(2 c^2) = (8/27) s^3

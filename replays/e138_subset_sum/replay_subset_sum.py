@@ -358,6 +358,21 @@ def run():
     return finish()
 
 
+def _checker_sha256():
+    """sha256 of this script's source (CRLF normalised to LF); several files are concatenated in the order listed."""
+    import hashlib
+    import os
+
+    here = os.path.dirname(os.path.abspath(__file__))
+    names = [os.path.basename(__file__)]
+    h = hashlib.sha256()
+    for n in names:
+        with open(os.path.join(here, n), "rb") as f:
+            h.update(f.read().replace(b"\r\n", b"\n"))
+    return h.hexdigest()
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(newline="\n")  # byte-identical output on Windows and Linux
+    print("checker-sha256: " + _checker_sha256(), flush=True)
     sys.exit(run())

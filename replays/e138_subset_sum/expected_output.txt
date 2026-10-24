@@ -1,3 +1,4 @@
+checker-sha256: d3fd25b96a2bda6cbcf8643189ae633b43962647ad5be1f3b306c6442a796b81
 [PASS] SS01: Delta = eta - tau = 0.02776 and Gamma = 2 tau - eta = 0.46220 (exact decimal arithmetic)
 [PASS] SS02: |r| <= sum |r_j| = 2.433 and |s| <= 4.010
 [PASS] SS03: Zhat_f, Zhat_g, Zhat_f,kappa, Zhat_g,kappa within 5e-07 of the stated centres ([1.19636, 1.28774, 1.211079, 1.30381])

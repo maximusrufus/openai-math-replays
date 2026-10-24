@@ -1,3 +1,4 @@
+checker-sha256: eddc1cffe09f8c3f5e0fb5358a74daa835879be32758e33ded585a20880a22a7
 [PASS] CP01: T9 has 581 monomials
 [PASS] CP02: A has 1785 nonzero rows (got 1785)
 [PASS] CP03: rank_Q(A) = 516 (got 516), nullity 65

@@ -1,3 +1,4 @@
+checker-sha256: d3aa9911d1e0ce442a3c04f0c5d56b77af136600698549aaffd9267b165ecfd7
 R(3,12)>=53  n=52  sha256=f255d720051434018a9095438816c06f2151196e7b9dbf82d55528d691bd84bf  K3-free(free/free)  I12-free(free/free)  VERIFIED by A+B
 R(3,13)>=61  n=60  sha256=d619f0bfed32af5e2fbc8c724d9c65dbf388a19d5647d20e7835b501bc03227a  K3-free(free/free)  I13-free(free/free)  VERIFIED by A+B
 R(3,15)>=74  n=73  sha256=ae94e8e6b3c1a26b90cf55d754c742074efd62449c8227a285bd288eb093d26e  K3-free(free/free)  I15-free(free/free)  VERIFIED by A+B

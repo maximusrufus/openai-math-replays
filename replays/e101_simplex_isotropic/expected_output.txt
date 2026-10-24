@@ -1,3 +1,4 @@
+checker-sha256: 09e242d48aca4b589ada697496d410a12af2b3b6643a47a33ad1f676faacefe8
 [PASS] S01: Lemma 2.2/4.1 (4.2) 0<b<1/2, l>0 [nodes 379]
 [PASS] S02: Lemma 2.2/4.1 (4.2) p>0 [nodes 506]
 [PASS] S03: Lemma 2.2/4.1 (4.2) |h0|<=.67 sqrt p [nodes 523]
