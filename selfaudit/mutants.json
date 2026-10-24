@@ -1015,8 +1015,8 @@
    "edits": [
     {
      "file": "replay_calabi.py",
-     "find": "abs(float(kmax) - 4.44605e-13) < 1e-17",
-     "replace": "abs(float(kmax) - 4.44606e-13) < 1e-17",
+     "find": "abs(kmax - Fr(\"4.44605e-13\"))",
+     "replace": "abs(kmax - Fr(\"4.44606e-13\"))",
      "count": 1
     }
    ]
@@ -1030,8 +1030,8 @@
    "edits": [
     {
      "file": "replay_calabi.py",
-     "find": "abs(float(kmax) - 4.44605e-13) < 1e-17",
-     "replace": "abs(float(kmax) - 4.44615e-13) < 1e-17",
+     "find": "abs(kmax - Fr(\"4.44605e-13\"))",
+     "replace": "abs(kmax - Fr(\"4.44615e-13\"))",
      "count": 1
     }
    ]
