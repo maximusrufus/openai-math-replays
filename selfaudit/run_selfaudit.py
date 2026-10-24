@@ -199,7 +199,7 @@ def md_cell(s):
     return re.sub(r"\s+", " ", s).replace("|", "\\|")
 
 
-def write_report(mutants, results, equiv, path):
+def write_report(mutants, results, equiv, path, notes=None):
     by = {m["id"]: m for m in mutants}
     lines = [
         "# Self-audit result",
@@ -275,6 +275,11 @@ def write_report(mutants, results, equiv, path):
                 "- classification: non-equivalent survivor (a finding about the checker; no equivalence argument)"
             )
         lines.append("")
+    if notes:
+        lines += ["## Notes", ""]
+        for k, v in notes.items():
+            lines.append("- %s: %s" % (k, v))
+        lines.append("")
     lines += [
         "## All mutants",
         "",
@@ -305,14 +310,22 @@ def main():
     ap.add_argument("-j", type=int, default=8)
     ap.add_argument("--timeout", type=int, default=3600)
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--report-only", action="store_true", help="regenerate RESULT.md from results.json and equivalence.json without running mutants")
     a = ap.parse_args()
     mutants = json.loads(read_text(os.path.join(HERE, "mutants.json")))["mutants"]
     ids = [m["id"] for m in mutants]
     assert len(ids) == len(set(ids)), "duplicate mutant id"
     sel = [m for m in mutants if a.only in m["replay"]]
     equiv_path = os.path.join(HERE, "equivalence.json")
-    equiv = json.loads(read_text(equiv_path)) if os.path.isfile(equiv_path) else {}
+    eq = json.loads(read_text(equiv_path)) if os.path.isfile(equiv_path) else {}
+    equiv, notes = eq.get("equivalent", {}), eq.get("notes", {})
     results = []
+    if a.report_only:
+        results = json.loads(read_text(os.path.join(HERE, "results.json")))
+        sel = [m for m in mutants if m["id"] in {r["id"] for r in results}]
+        tot, surv = write_report(sel, results, equiv, os.path.join(HERE, "RESULT.md"), notes)
+        print("report regenerated: %d mutants, %d survivors" % (tot["n"], tot["sv"]))
+        return 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, a.j)) as ex:
         futs = {ex.submit(run_mutant, m, a.timeout): m for m in sel}
         for f in concurrent.futures.as_completed(futs):
@@ -336,7 +349,7 @@ def main():
             os.path.join(HERE, "results.json"),
         )
     write_text(out_js, json.dumps(results, indent=1) + "\n")
-    tot, surv = write_report(sel, results, equiv, out_md)
+    tot, surv = write_report(sel, results, equiv, out_md, notes)
     print(
         "\n%d mutants: %d killed (hard %d, soft %d), %d survived, %d errors -> %s"
         % (

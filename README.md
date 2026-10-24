@@ -92,7 +92,7 @@ routine. sympy is used only for the Smith normal form (C9) and the Laurent-polyn
 - Matrix (15) was read from the page image; the computed matrix agrees with it exactly.
 - Passing replays say the stated computations are consistent, nothing more.
 - The "stated constants" checks in e101 (S23–S27) and e352 (CF04) compare transcribed constants with a second copy in the same file; they guard against edits, not against a transcription error.
-- Dependencies are pinned (`sympy==1.14.0`, `mpmath==1.3.0`). The recorded output was produced with CPython 3.14.5;
+- Dependencies are pinned (`sympy==1.14.0`, `mpmath==1.3.0`). The committed output was produced with CPython 3.14.5;
   CI also runs 3.12.
 
 ## Additional entries: pinned sources
@@ -214,6 +214,45 @@ python -m unittest tests.test_replays_adversarial -v      # the eight additional
 CI (`.github/workflows/ci.yml`) runs on every push, on Python 3.12 and 3.14: the Wall replay and tests; the seven fast replays (the simplex entry in its `--quick`
 subset) with the diff against the expected output, the hash check and the built-in wrong-input controls (`--selftest`); a separate slow job with the Campana-Peternell replay and the full simplex run (same steps, including `--selftest`); and the
 perturbation tests for the eight additional entries.
+
+## Checker hash and one-command check
+
+Every replay script prints `checker-sha256: <sha256 of its own source file(s)>` as the opening line of its output, and
+`CHECKERS.sha256` lists the same hashes (several files of one replay are concatenated in the order listed; CRLF is read as LF).
+`python check_all.py` re-runs every replay, compares stdout with the committed expected output byte for byte, verifies each
+`SHA256SUMS` and `CHECKERS.sha256`, and exits nonzero on any difference (`--quick` uses the documented quick subset where one exists,
+for the simplex entry; a full run takes about 10 minutes with the replays in parallel). It runs as one job in CI.
+
+## Self-audit
+
+Question: does each checker reject a wrong input? Rules were written down before any mutant: [`selfaudit/PREREG.md`](selfaudit/PREREG.md).
+Each mutant changes one stated value or one data element (or one edge of a graph), or moves a stated value by one unit past an
+inequality, in a temporary copy of the replay; it counts as killed if the replay exits nonzero or its output differs from the expected output.
+
+Result ([`selfaudit/RESULT.md`](selfaudit/RESULT.md)): 77 mutants over the 10 replays, 72 killed (71 by a nonzero exit, 1 by an output
+difference only), 5 survivors. Of the survivors, 3 are equivalent (argued in writing in RESULT.md) and 2 are findings about our
+checkers: the claim that the Wall group surjects onto Z does not assert surjectivity (`wall_d2`), and the stated constant 4.44605e-13 in the
+Calabi-flow replay is accepted with a tolerance of 1e-17, so a value off by one unit in its last printed digit passes (`e352`).
+The checkers were not changed.
+
+| replay | killed / total | survivors |
+|---|---|---|
+| wall_d2 | 6 / 7 | 1 (finding) |
+| e059 | 8 / 9 | 1 (equivalent) |
+| e067 | 7 / 8 | 1 (equivalent) |
+| e101 | 8 / 8 | none |
+| e138 | 8 / 8 | none |
+| e153 | 6 / 6 | none |
+| e268 | 7 / 7 | none |
+| e318 | 7 / 8 | 1 (equivalent) |
+| e352 | 8 / 9 | 1 (finding) |
+| ramsey_alphaevolve | 7 / 7 | none |
+
+Re-run (about 30 minutes on 4 cores; the e101 mutants use the `--quick` subset, ramsey_alphaevolve uses `--cheap`):
+
+```
+python selfaudit/run_selfaudit.py -j 4
+```
 
 ## License
 
