@@ -24,7 +24,7 @@ Soft kills: the replay exited 0 and reported all claims as passing on the mutate
 
 - mutation: hypothesis n0 = 2 mod 5 -> n0 = 3 mod 5 in the Lemma 3.1 instance generator
 - why it should break the claim: instances then violate the mod-5 conditions the checker also asserts
-- classification: equivalent. Argument: The Lemma 3.1 / 9.1 conditions depend on n0 only through n0^2 mod 5 (a = (n0^2-1)/4, b = (n1^2-1)/4, n1 = n0 + 5*2^r, so n1 = n0 mod 5), and n0 = 2 and n0 = 3 (mod 5) are negatives of each other mod 5, so a = b = 2 (mod 5) in both cases. The mutated hypothesis is therefore another true instance family and every checked property still holds; the mutant does not falsify the claim it was meant to break (mis-specified), and the output does not change because only the instance count is printed.
+- classification: mis-specified (not equivalent). Argument: The Lemma 3.1 / 9.1 conditions depend on n0 only through n0^2 mod 5 (a = (n0^2-1)/4, b = (n1^2-1)/4, n1 = n0 + 5*2^r, so n1 = n0 mod 5), and n0 = 2 and n0 = 3 (mod 5) are negatives of each other mod 5, so a = b = 2 (mod 5) in both cases. The mutated hypothesis is therefore another true instance family and every checked property still holds; the mutant does not falsify the claim it was meant to break (mis-specified), and the output does not change because only the instance count is printed.
 
 ### e067-02 (e067, class D)
 

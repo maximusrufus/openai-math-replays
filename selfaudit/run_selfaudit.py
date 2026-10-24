@@ -199,6 +199,9 @@ def md_cell(s):
     return re.sub(r"\s+", " ", s).replace("|", "\\|")
 
 
+misspec = {}
+
+
 def write_report(mutants, results, equiv, path, notes=None):
     by = {m["id"]: m for m in mutants}
     lines = [
@@ -268,7 +271,9 @@ def write_report(mutants, results, equiv, path, notes=None):
         lines.append("")
         lines.append("- mutation: %s" % m["desc"])
         lines.append("- why it should break the claim: %s" % m["why"])
-        if r["id"] in equiv:
+        if r["id"] in misspec:
+            lines.append("- classification: mis-specified (not equivalent). Argument: %s" % misspec[r["id"]])
+        elif r["id"] in equiv:
             lines.append("- classification: equivalent. Argument: %s" % equiv[r["id"]])
         else:
             lines.append(
@@ -319,6 +324,8 @@ def main():
     equiv_path = os.path.join(HERE, "equivalence.json")
     eq = json.loads(read_text(equiv_path)) if os.path.isfile(equiv_path) else {}
     equiv, notes = eq.get("equivalent", {}), eq.get("notes", {})
+    global misspec
+    misspec = eq.get("mis_specified", {})
     results = []
     if a.report_only:
         results = json.loads(read_text(os.path.join(HERE, "results.json")))
@@ -362,7 +369,7 @@ def main():
             os.path.basename(out_md),
         )
     )
-    bad = [r for r in surv if r["id"] not in equiv]
+    bad = [r for r in surv if r["id"] not in equiv and r["id"] not in misspec]
     if tot["er"]:
         return 2
     return 1 if (a.strict and bad) else 0

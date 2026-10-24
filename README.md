@@ -230,7 +230,7 @@ Each mutant changes one stated value or one data element (or one edge of a graph
 inequality, in a temporary copy of the replay; it counts as killed if the replay exits nonzero or its output differs from the expected output.
 
 Result ([`selfaudit/RESULT.md`](selfaudit/RESULT.md)): 77 mutants over the 10 replays, 74 killed (73 by a nonzero exit, 1 by an output
-difference only), 3 survivors, all equivalent (argued in writing in RESULT.md). The initial run had 5 survivors; 2 were findings about our
+difference only), 3 survivors: 2 equivalent (e067-02, e318-03) and 1 mis-specified mutant (e059-05, whose mutated hypothesis is also true), argued in writing in RESULT.md. The initial run had 5 survivors; 2 were findings about our
 checkers and are fixed (commit ee3a574): the claim that the Wall group surjects onto Z did not assert surjectivity (`wall_d2`), and the stated
 constant 4.44605e-13 in the Calabi-flow replay was accepted with a tolerance of 1e-17, so a value off by one unit in its last printed digit
 passed (`e352`). Both mutants are killed after the fixes. Amendment history: [`selfaudit/PREREG_AMENDMENTS.md`](selfaudit/PREREG_AMENDMENTS.md).

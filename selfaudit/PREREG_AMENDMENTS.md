@@ -17,8 +17,7 @@ Exact change between 3279db5 and 71be1da (all wording, no rule or number):
 - "that is recorded in `RESULT.md`" became "that is noted in `RESULT.md`";
 - "added after the first run" became "added after the initial run".
 
-Reason: the repository wording rules avoid the words "first" and "record". A statement made earlier in the task that the PREREG commit was
-rewritten twice was inaccurate: the PREREG commit was amended once. A later history rewrite (message wording only, 20:55:29) covered the commits
+Reason: editorial wording only. An earlier note said the PREREG commit was rewritten twice; it was amended once. A later history rewrite (message wording only, 20:55:29) covered the commits
 after 71be1da and did not touch 71be1da.
 
 ## Other history rewrites (not PREREG.md)
@@ -34,3 +33,5 @@ after 71be1da and did not touch 71be1da.
   4.44615e-13) but their `find` text now targets the fixed comparison `abs(kmax - Fr("4.44605e-13"))`, because the checker line they originally
   matched was replaced by ee3a574. Reason: the fix for the finding changed the source line; the mutation, class and expected effect are unchanged.
   The mutant list is otherwise as committed in a791cee; wall_d2-07 is unchanged and applies to the fixed source as before.
+
+The ordering above rests on local git history; PREREG.md was not externally timestamped.
