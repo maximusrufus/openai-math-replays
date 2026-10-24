@@ -1,0 +1,83 @@
+{
+ "circles__alphaevolve_2025/BASE": {
+  "word": "WITNESSED",
+  "overlaps": 0,
+  "boxSlackSign": 1,
+  "worst": [
+   8,
+   9
+  ]
+ },
+ "circles__alphaevolve_2025/m01": {
+  "word": "REPAIRED",
+  "overlaps": 1,
+  "boxSlackSign": 1,
+  "worst": [
+   8,
+   9
+  ]
+ },
+ "circles__alphaevolve_2025/m02": {
+  "word": "REPAIRED",
+  "overlaps": 1,
+  "boxSlackSign": 1,
+  "worst": [
+   4,
+   9
+  ]
+ },
+ "circles__alphaevolve_2025/m03": {
+  "word": "REPAIRED",
+  "overlaps": 0,
+  "boxSlackSign": -1,
+  "worst": [
+   8,
+   9
+  ]
+ },
+ "circles__alphaevolve_2025/m04": {
+  "word": "REPAIRED",
+  "overlaps": 0,
+  "boxSlackSign": -1,
+  "worst": [
+   8,
+   9
+  ]
+ },
+ "circles__ours_2026/BASE": {
+  "word": "WITNESSED",
+  "overlaps": 0,
+  "boxSlackSign": 1,
+  "worst": [
+   3,
+   17
+  ]
+ },
+ "circles__ours_2026/m01": {
+  "word": "REPAIRED",
+  "overlaps": 1,
+  "boxSlackSign": 1,
+  "worst": [
+   3,
+   17
+  ]
+ },
+ "circles__ours_2026/m02": {
+  "word": "REPAIRED",
+  "overlaps": 1,
+  "boxSlackSign": 1,
+  "worst": [
+   5,
+   16
+  ]
+ },
+ "circles__ours_2026/m03": {
+  "word": "REPAIRED",
+  "overlaps": 0,
+  "boxSlackSign": -1,
+  "worst": [
+   3,
+   17
+  ]
+ }
+}
