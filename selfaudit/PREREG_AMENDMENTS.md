@@ -11,11 +11,7 @@ except where stated; no threshold or pass rule was changed after any result exis
 | 20:02:34 | The same commit was amended (now 71be1da) to remove wording only; this is the only rewrite of the file. No mutant, `mutants.json` or runner existed yet. |
 | after | `PREREG.md` has not been modified since 20:02:34 (`git log -- selfaudit/PREREG.md` lists the one commit). |
 
-Exact change between 3279db5 and 71be1da (all wording, no rule or number):
-- "exactly the first value outside the printed error" became "exactly the smallest value outside the printed error" (e268 row);
-- "ignores only the first line" became "ignores only the opening line"; "excluding the first line" became "excluding the opening line" (two places);
-- "that is recorded in `RESULT.md`" became "that is noted in `RESULT.md`";
-- "added after the first run" became "added after the initial run".
+Exact change between 3279db5 and 71be1da (all wording, no rule or number): five phrases reworded in four lines (the e268 row, two "opening line" phrases, one "noted in `RESULT.md`" phrase and one "initial run" phrase).
 
 Reason: editorial wording only. An earlier note said the PREREG commit was rewritten twice; it was amended once. A later history rewrite (message wording only, 20:55:29) covered the commits
 after 71be1da and did not touch 71be1da.
@@ -24,7 +20,7 @@ after 71be1da and did not touch 71be1da.
 
 | time | event |
 |---|---|
-| 20:24:43 | The commit adding `mutants.json` and the runner was amended (b80ba43 to 30765a3, now a791cee). Changes: one mutant `desc` wording ("in the first graph" became "in the graph with coordinates (u, w)") and one runner message wording. This happened after the full mutant run had started (the run had already loaded the list); no mutation, locator or class was changed. |
+| 20:24:43 | The commit adding `mutants.json` and the runner was amended (b80ba43 to 30765a3, now a791cee). Changes: one mutant `desc` wording (the graph is now named by its coordinates (u, w)) and one runner message wording. This happened after the full mutant run had started (the run had already loaded the list); no mutation, locator or class was changed. |
 | 20:55:29 | Commit messages of the four commits after 71be1da were reworded (one phrase), content unchanged. |
 
 ## Amendments
