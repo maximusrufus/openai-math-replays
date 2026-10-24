@@ -1,0 +1,1174 @@
+{
+ "note": "Mutant list frozen by the commit that adds it; see PREREG.md. 'cls': D = input-data mutant, B = boundary mutant.",
+ "mutants": [
+  {
+   "id": "wall_d2-01",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "relator r1 exponent a1^-4 -> a1^-5",
+   "why": "r1 no longer matches matrix (15) and the sum 1+a+a^2+a^3 = 1 claim",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "\"r1\": word(\"x1 a1 x1^-1 a1^-4\"),",
+     "replace": "\"r1\": word(\"x1 a1 x1^-1 a1^-5\"),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-02",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "relator r3 exponent a2^-13 -> a2^-14",
+   "why": "sum of 13 alternating terms = 1 claim and entry D[2][3] = -1 become false",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "\"r3\": word(\"x1 a2^-13\"),",
+     "replace": "\"r3\": word(\"x1 a2^-14\"),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-03",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "character value rho(a1) = w -> w^2",
+   "why": "r1 is no longer sent to 1 under rho",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "return {\"x1\": Q(-1), \"a1\": W, \"x2\": W * W, \"a2\": Q(-1), \"s\": Q(1)}",
+     "replace": "return {\"x1\": Q(-1), \"a1\": W * W, \"x2\": W * W, \"a2\": Q(-1), \"s\": Q(1)}",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-04",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "matrix (15) entry row 2 column 3: 2 -> 3",
+   "why": "computed Fox matrix differs from the transcribed matrix in one entry",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "[Q(0), Q(0), Q(2), W * W - 1, Q(0)],",
+     "replace": "[Q(0), Q(0), Q(3), W * W - 1, Q(0)],",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-05",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "matrix (15) entry row 4 column 2: -(1+w) -> (1+w)",
+   "why": "sign of one entry of the transcribed matrix flipped",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "[Q(0), -(Q(1) + W), Q(1), Q(0), Q(1) - W * W],",
+     "replace": "[Q(0), (Q(1) + W), Q(1), Q(0), Q(1) - W * W],",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-06",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "stated minor -4(1-w^2) -> -5(1-w^2)",
+   "why": "the stated minor value no longer equals the computed determinant",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "dm == Q(-4) * (Q(1) - W * W) and not dm.iszero(),",
+     "replace": "dm == Q(-5) * (Q(1) - W * W) and not dm.iszero(),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "wall_d2-07",
+   "replay": "wall_d2",
+   "cls": "D",
+   "desc": "epimorphism to Z: s -> 1 replaced by s -> 2",
+   "why": "G -> Z with s -> 2 is not onto Z, so the claim 'G surjects onto Z' is false (the relator checks still pass)",
+   "edits": [
+    {
+     "file": "replay_wall.py",
+     "find": "phi = {\"x1\": 0, \"a1\": 0, \"x2\": 0, \"a2\": 0, \"s\": 1}",
+     "replace": "phi = {\"x1\": 0, \"a1\": 0, \"x2\": 0, \"a2\": 0, \"s\": 2}",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-01",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "q1 factor (u - w - 2 w^8) -> (u - w - 3 w^8) in the graph with coordinates (u, w)",
+   "why": "phi(0,w) and the Milnor number 51 claims depend on this factor",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "q1 = (u - w - w**w8) * (u - w - 2 * w**w8) * (u - w**2)",
+     "replace": "q1 = (u - w - w**w8) * (u - w - 3 * w**w8) * (u - w**2)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-02",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "h(X,T) factor (X - 2T^2) -> (X - 3T^2) in the comparison polynomial",
+   "why": "d1 == h(psi) and d0 == h(phi) compare against the explicit products",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "return T_ * (X_ - T_ * T_) * (X_ - 2 * T_ * T_)",
+     "replace": "return T_ * (X_ - T_ * T_) * (X_ - 3 * T_ * T_)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-03",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "default exponent w8 = 8 -> 9",
+   "why": "phi(0,w) = -w^4(1+w^7)(1+2w^7) and mu = 51 are stated for exponent 8",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "def plane_polys(w8=8, shift=0):",
+     "replace": "def plane_polys(w8=9, shift=0):",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-04",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "truncation orders N = (55, 60) -> (5, 6)",
+   "why": "truncated Jacobian algebra with N = 5 cannot give mu = 51",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "N_list = (55, 60)",
+     "replace": "N_list = (5, 6)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-05",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "hypothesis n0 = 2 mod 5 -> n0 = 3 mod 5 in the Lemma 3.1 instance generator",
+   "why": "instances then violate the mod-5 conditions the checker also asserts",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "n0 % 2**r == 1 and n0 % 5 == 2 and n0 > 5 * 2**r",
+     "replace": "n0 % 2**r == 1 and n0 % 5 == 3 and n0 > 5 * 2**r",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-06",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "stated coefficient 2 w^19 -> 3 w^19 in psi(0,w)",
+   "why": "the exact expansion no longer holds",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "ps0 == -(w**4) * (1 - w) + 2 * w**19 * (1 - w) ** 2,",
+     "replace": "ps0 == -(w**4) * (1 - w) + 3 * w**19 * (1 - w) ** 2,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-07",
+   "replay": "e059",
+   "cls": "B",
+   "desc": "gcd bound 2^(r-1) -> 2^r in the Lemma 9.1 condition",
+   "why": "one power of 2 past the stated bound g >= 2^(r-1); gcd(a,b) has 2-adic valuation exactly r-1 for these instances",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "g >= 2 ** (r - 1) > 5",
+     "replace": "g >= 2 ** r > 5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-08",
+   "replay": "e059",
+   "cls": "D",
+   "desc": "stated count 24 -> 25 of Lemma 3.1 instances",
+   "why": "the loop produces exactly 8 values of r times 3 instances",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "bad == 0 and count == 24,",
+     "replace": "bad == 0 and count == 25,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e059-09",
+   "replay": "e059",
+   "cls": "B",
+   "desc": "stated threshold 2^(r-1) > 5 -> 2^(r-1) > 8",
+   "why": "for r = 4, 2^(r-1) = 8, so the strict inequality fails at equality",
+   "edits": [
+    {
+     "file": "replay_zariski.py",
+     "find": "g >= 2 ** (r - 1) > 5",
+     "replace": "g >= 2 ** (r - 1) > 8",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-01",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "witness Ha entry 192 -> 193",
+   "why": "N (B_i Ha_j) = 0 and the slice identity fail for a changed witness entry",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "4, 3, 12, 48, 192, 768, 17",
+     "replace": "4, 3, 12, 48, 193, 768, 17",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-02",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "witness Hb entry 54/3 -> 55/3",
+   "why": "column B'Hb is no longer killed by N",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "(3, 8, 21, 54, 9, 24, 6, 14",
+     "replace": "(3, 8, 21, 55, 9, 24, 6, 14",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-03",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "witness Bv entry 45 - 4v -> 45 - 5v",
+   "why": "columns B(0)Ha and B(1)Ha change",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "45 - 4 * v,",
+     "replace": "45 - 5 * v,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-04",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "witness Bp entry 11/5 -> 12/5",
+   "why": "column B'Hb changes",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "fmpq(11, 5),",
+     "replace": "fmpq(12, 5),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-05",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "sparse column s1 coefficient 3 -> 4",
+   "why": "N no longer kills the slices for s1",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "(5, (15, 15, 15)): fmpq(3),",
+     "replace": "(5, (15, 15, 15)): fmpq(4),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-06",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "sparse column s2 coefficient 25 -> 26",
+   "why": "N no longer kills the slices for s2",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "(9, (10, 10, 10)): fmpq(25),",
+     "replace": "(9, (10, 10, 10)): fmpq(26),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-07",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "weight of t: 3 -> 4",
+   "why": "the grading used to build the monomial set changes (581 monomials claim)",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "W = (1, 2, 3, 4, 5, 6, 1, 1, 2, 3)",
+     "replace": "W = (1, 2, 3, 4, 5, 6, 1, 1, 2, 4)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e067-08",
+   "replay": "e067",
+   "cls": "D",
+   "desc": "stated rank 6814 -> 6815 of the K3 matrix (one past)",
+   "why": "exact rank claim off by one",
+   "edits": [
+    {
+     "file": "replay_campana_peternell.py",
+     "find": "M3.nrows() == 8280 and rk3 == 6814 and d3 == 6,",
+     "replace": "M3.nrows() == 8280 and rk3 == 6815 and d3 == 6,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-01",
+   "replay": "e101",
+   "cls": "D",
+   "desc": "constant alpha = 3/40 -> 4/40",
+   "why": "the numeric bound s(.28^2 + alpha .67^2/(4(1-eps-kappa))) < .111 and the stated constants no longer hold",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "ALPHA = R(3, 40)",
+     "replace": "ALPHA = R(4, 40)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-02",
+   "replay": "e101",
+   "cls": "B",
+   "desc": "constant kappa = 49/100 -> 50/100",
+   "why": "the numeric bound of (4.7) is near .111 and the stated constants change",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "KAPPA = R(49, 100)",
+     "replace": "KAPPA = R(50, 100)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-03",
+   "replay": "e101",
+   "cls": "B",
+   "desc": "bound h0 <= .67 sqrt p -> .66 sqrt p",
+   "why": "bound (4.2) is stated sharp to the printed digit; one unit lower should fail on the interval",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "C42 = dict(h0=R(67, 100), p_pos=R(25, 100), p_a4=R(46, 100))",
+     "replace": "C42 = dict(h0=R(66, 100), p_pos=R(25, 100), p_a4=R(46, 100))",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-04",
+   "replay": "e101",
+   "cls": "B",
+   "desc": "bound p >= .25 for a >= 0 -> p >= .26",
+   "why": "one unit past the printed lower bound",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "C42 = dict(h0=R(67, 100), p_pos=R(25, 100), p_a4=R(46, 100))",
+     "replace": "C42 = dict(h0=R(67, 100), p_pos=R(26, 100), p_a4=R(46, 100))",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-05",
+   "replay": "e101",
+   "cls": "B",
+   "desc": "bound p >= .46 for a >= 4 -> p >= .47",
+   "why": "one unit past the printed lower bound",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "C42 = dict(h0=R(67, 100), p_pos=R(25, 100), p_a4=R(46, 100))",
+     "replace": "C42 = dict(h0=R(67, 100), p_pos=R(25, 100), p_a4=R(47, 100))",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-06",
+   "replay": "e101",
+   "cls": "D",
+   "desc": "interval U1 = (-1, .5) -> (-1, .6)",
+   "why": "the six intervals then overlap, violating the tiling claim",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "\"U1\": (-1.0, 0.5),",
+     "replace": "\"U1\": (-1.0, 0.6),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-07",
+   "replay": "e101",
+   "cls": "D",
+   "desc": "step bound m0 on P1: .19 -> .30",
+   "why": "dlogM/dlogq >= .30 on (-3,-2) is false",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "\"P1\": R(19, 100),",
+     "replace": "\"P1\": R(30, 100),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e101-08",
+   "replay": "e101",
+   "cls": "D",
+   "desc": "matrix entry Q22 = 2.72 -> 2.73",
+   "why": "the stated matrix of Proposition 3.6 is checked entry by entry",
+   "edits": [
+    {
+     "file": "replay_simplex.py",
+     "find": "[R(13, 100), R(272, 100)]]",
+     "replace": "[R(13, 100), R(273, 100)]]",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-01",
+   "replay": "e138",
+   "cls": "D",
+   "desc": "R6 entry 0.851 -> 0.861",
+   "why": "the sum |r_j| = 2.433 claim and Table 1 comparison fail",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "R6 = (0.851,",
+     "replace": "R6 = (0.861,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-02",
+   "replay": "e138",
+   "cls": "D",
+   "desc": "S6 entry -0.938 -> -0.948",
+   "why": "the sum |s_j| = 4.010 claim and Table 1 comparison fail",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "-0.938,",
+     "replace": "-0.948,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-03",
+   "replay": "e138",
+   "cls": "B",
+   "desc": "KAPPA 1.0315 -> 1.0316 (one unit in the last digit)",
+   "why": "Zhat_f,kappa and Zhat_g,kappa are compared with stated centres to 5e-7",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "KAPPA = 1.0315",
+     "replace": "KAPPA = 1.0316",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-04",
+   "replay": "e138",
+   "cls": "B",
+   "desc": "ETA 0.51772 -> 0.51773 (one unit in the last digit)",
+   "why": "Delta = eta - tau = 0.02776 is checked to 1e-12",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "ETA, TAU = 0.51772, 0.48996",
+     "replace": "ETA, TAU = 0.51773, 0.48996",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-05",
+   "replay": "e138",
+   "cls": "B",
+   "desc": "stated centre Zf 1.1963625 -> 1.1963631 (6e-7, just outside the 5e-7 tolerance)",
+   "why": "the replayed value differs from the mutated centre by more than 5e-7",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "\"Zf\": 1.1963625,",
+     "replace": "\"Zf\": 1.1963631,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-06",
+   "replay": "e138",
+   "cls": "B",
+   "desc": "bound 84/53 > 1.5848 -> > 1.58491",
+   "why": "84/53 = 1.584905..., so the stated inequality fails by 5e-6",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "Fr(84, 53) > Fr(15848, 10000)",
+     "replace": "Fr(84, 53) > Fr(158491, 100000)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-07",
+   "replay": "e138",
+   "cls": "B",
+   "desc": "exponent sum .499 < .5 -> .499 < .499",
+   "why": "strict inequality at equality",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "== Fr(499, 1000) < Fr(1, 2))",
+     "replace": "== Fr(499, 1000) < Fr(499, 1000))",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e138-08",
+   "replay": "e138",
+   "cls": "D",
+   "desc": "Table 1 entry 1.7255739 -> 1.7256739",
+   "why": "difference 1e-4 exceeds the column tolerance 4e-6",
+   "edits": [
+    {
+     "file": "replay_subset_sum.py",
+     "find": "1.7255739",
+     "replace": "1.7256739",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-01",
+   "replay": "e153",
+   "cls": "D",
+   "desc": "polynomial coefficient of t^30: -2 -> -3",
+   "why": "the disk certificate and the factorisation identity no longer hold",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "c[30] += -2",
+     "replace": "c[30] += -3",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-02",
+   "replay": "e153",
+   "cls": "D",
+   "desc": "Table 1 centre 5 real part moved by 1e-30 (10^10 in units of 1e-40)",
+   "why": "the exact root-disk certificate is sensitive at this size (same size as the built-in perturbation, applied to another row)",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "(-7723118558199735333585947045021501410451, 6250214494152701297733561366714273855663)",
+     "replace": "(-7723118558199735333585947045011501410451, 6250214494152701297733561366714273855663)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-03",
+   "replay": "e153",
+   "cls": "D",
+   "desc": "Table 1 centre 1 (real root) imaginary part 0 -> 10^10",
+   "why": "the real centre is no longer real: 'exactly one real root' and conjugate-pair claims",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "(18392867573155250211326543340571993487329, 0),",
+     "replace": "(18392867573155250211326543340571993487329, 10000000000),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-04",
+   "replay": "e153",
+   "cls": "B",
+   "desc": "disk-modulus bound 0.994 -> 0.9998 in the non-Pisot arithmetic",
+   "why": "1.0002094 * 0.9998 > 1 so the inequality fails (4-digit boundary)",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "Fr(10002094, 10**7) * Fr(994, 1000) < 1",
+     "replace": "Fr(10002094, 10**7) * Fr(9998, 10000) < 1",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-05",
+   "replay": "e153",
+   "cls": "B",
+   "desc": "bound |C0(m)| < .018 -> < .0172",
+   "why": "the maximum is .01726, above .0172",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "np.abs(c0(np.arange(-20, 100000))).max() < 0.018,",
+     "replace": "np.abs(c0(np.arange(-20, 100000))).max() < 0.0172,",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e153-06",
+   "replay": "e153",
+   "cls": "B",
+   "desc": "z_beta < 1.83929 -> z_beta < 1.83928",
+   "why": "z_beta = 1.839286..., which exceeds 1.83928",
+   "edits": [
+    {
+     "file": "replay_bernoulli.py",
+     "find": "Fr(183928, 100000) < zb < Fr(183929, 100000),",
+     "replace": "Fr(183928, 100000) < zb < Fr(183928, 100000),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-01",
+   "replay": "e268",
+   "cls": "D",
+   "desc": "MPS diagonal parameter D_2 = -84 -> -85",
+   "why": "the exact trial-vector energy bound (C.8) at N = 72 is stated for these parameters",
+   "edits": [
+    {
+     "file": "haldane_mps.py",
+     "find": "DDIAG = [-289, -84, -9, 33, -22, 27, 71, -11]",
+     "replace": "DDIAG = [-289, -85, -9, 33, -22, 27, 71, -11]",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-02",
+   "replay": "e268",
+   "cls": "D",
+   "desc": "thermal table entry (b=21/2, n=8, Z) 3741281 -> 3741381",
+   "why": "100e-6 off, tolerance is 10e-6",
+   "edits": [
+    {
+     "file": "haldane_traces.py",
+     "find": "8: (3741281, 567167, 984108),",
+     "replace": "8: (3741381, 567167, 984108),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-03",
+   "replay": "e268",
+   "cls": "B",
+   "desc": "thermal table entry (b=21/2, n=6, Z) 8945303 -> 8945313 (exactly the tolerance 10e-6)",
+   "why": "moves the centre by the printed error; fails whenever the replayed value is not on the far side",
+   "edits": [
+    {
+     "file": "haldane_traces.py",
+     "find": "6: (8945303, 346734, 939987),",
+     "replace": "6: (8945313, 346734, 939987),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-04",
+   "replay": "e268",
+   "cls": "B",
+   "desc": "thermal table entry (b=49/4, n=4, Z) 124885379 -> 124885409 (exactly the tolerance 30e-6)",
+   "why": "moves the centre by the printed error",
+   "edits": [
+    {
+     "file": "haldane_traces.py",
+     "find": "4: (124885379, 65757),",
+     "replace": "4: (124885409, 65757),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-05",
+   "replay": "e268",
+   "cls": "D",
+   "desc": "trace shift A_SHIFT 700741/500000 -> 700742/500000",
+   "why": "the thermal quantities depend on the shift",
+   "edits": [
+    {
+     "file": "haldane_traces.py",
+     "find": "A_SHIFT = 700741 / 500000",
+     "replace": "A_SHIFT = 700742 / 500000",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-06",
+   "replay": "e268",
+   "cls": "B",
+   "desc": "constant C = 79/10 -> 7768/1000 in row 1 of (4.18)",
+   "why": "G(1/8) = 7.76836... exceeds 7.768 by 4e-4, so G(u0) <= C fails",
+   "edits": [
+    {
+     "file": "haldane_scalar.py",
+     "find": "C=Fr(79, 10))",
+     "replace": "C=Fr(7768, 1000))",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e268-07",
+   "replay": "e268",
+   "cls": "D",
+   "desc": "filter polynomial FN: -25 -> -26",
+   "why": "the filter inequality FN(V) - B_N > .3463 is stated for -25",
+   "edits": [
+    {
+     "file": "haldane_scalar.py",
+     "find": "FN = lambda x: x**6 * (-25 + 100 * x * x) ** 2",
+     "replace": "FN = lambda x: x**6 * (-26 + 100 * x * x) ** 2",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-01",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "row index 16 -> 17 in R1",
+   "why": "det d1[R1,C1] = -1 is stated for these rows",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "R1 = (1, 2, 3, 5, 7, 9, 15, 16)",
+     "replace": "R1 = (1, 2, 3, 5, 7, 9, 15, 17)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-02",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "column index 7 -> 8 in C1",
+   "why": "det d1[R1,C1] = -1 is stated for these columns",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "C1 = (0, 1, 2, 3, 4, 5, 6, 7)",
+     "replace": "C1 = (0, 1, 2, 3, 4, 5, 6, 8)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-03",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "row index 52 -> 53 in R2",
+   "why": "det d2[R2,C2] = 2916 is stated for these rows",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "39, 41, 43, 52)",
+     "replace": "39, 41, 43, 53)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-04",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "column index 27 -> 26 in C2",
+   "why": "det d2[R2,C2] = 2916 is stated for these columns",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "20, 22, 23, 25, 27)",
+     "replace": "20, 22, 23, 25, 26)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-05",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "R3 last index 61 -> 62 (as in the built-in perturbation, applied here as a source edit)",
+   "why": "det d3[R3,C3] = 1024 is stated for these rows",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "        56,\n        61,\n    )\n    C3 = (",
+     "replace": "        56,\n        62,\n    )\n    C3 = (",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-06",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "printed d1 for sl2: entry -2 -> -3",
+   "why": "d1 is compared entry by entry with the printed matrix",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "== [[0, 0, -1], [2, 0, 0], [0, -2, 0]]",
+     "replace": "== [[0, 0, -1], [2, 0, 0], [0, -3, 0]]",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-07",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "stated omega(E12,E21,E11-E22) = 2 -> 3",
+   "why": "the computed value is 2",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "val == 2)",
+     "replace": "val == 3)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e318-08",
+   "replay": "e318",
+   "cls": "D",
+   "desc": "stated H^3 dimension 1 -> 2",
+   "why": "the computed dimensions are (0, 0, 1)",
+   "edits": [
+    {
+     "file": "replay_chromatic.py",
+     "find": "(h1, h2, h3) == (0, 0, 1),",
+     "replace": "(h1, h2, h3) == (0, 0, 2),",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-01",
+   "replay": "e352",
+   "cls": "D",
+   "desc": "constant B = 751/4 -> 752/4",
+   "why": "(3.5) coefficients and the stated constants are derived from B",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "B_ = Fr(751, 4)",
+     "replace": "B_ = Fr(752, 4)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-02",
+   "replay": "e352",
+   "cls": "D",
+   "desc": "constant C = -1215/4 -> -1217/4",
+   "why": "(3.5) coefficients and the stated constants are derived from C",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "C_ = Fr(-1215, 4)",
+     "replace": "C_ = Fr(-1217, 4)",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-03",
+   "replay": "e352",
+   "cls": "D",
+   "desc": "starting index S0 = 56 -> 57",
+   "why": "the stated index enters Lemma 3.2 constants",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "S0 = 56\nK0 =",
+     "replace": "S0 = 57\nK0 =",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-04",
+   "replay": "e352",
+   "cls": "D",
+   "desc": "printed matrix entry 63731 -> 63732",
+   "why": "kmax and dmax are stated to 6 digits and depend on the row sums of |entries|",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "MAT = [[25190, -63731], [721855, 359157]]",
+     "replace": "MAT = [[25190, -63732], [721855, 359157]]",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-05",
+   "replay": "e352",
+   "cls": "B",
+   "desc": "K0 last digit ...041 -> ...042 (one unit)",
+   "why": "k0 enters the shooting estimate at 40 digits",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "K0 = Fr(\"-.094617116666041\")",
+     "replace": "K0 = Fr(\"-.094617116666042\")",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-06",
+   "replay": "e352",
+   "cls": "B",
+   "desc": "D0 last digit ...639 -> ...640 (one unit)",
+   "why": "d0 enters the shooting estimate at 40 digits",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "D0 = Fr(\"0.400682721856639\")",
+     "replace": "D0 = Fr(\"0.400682721856640\")",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-07",
+   "replay": "e352",
+   "cls": "B",
+   "desc": "stated kmax 4.44605e-13 -> 4.44606e-13 (one unit in the last printed digit)",
+   "why": "the replayed value is compared with abs difference < 1e-17",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "abs(float(kmax) - 4.44605e-13) < 1e-17",
+     "replace": "abs(float(kmax) - 4.44606e-13) < 1e-17",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-08",
+   "replay": "e352",
+   "cls": "B",
+   "desc": "stated kmax 4.44605e-13 -> 4.44615e-13 (ten units in the last printed digit)",
+   "why": "difference 1e-16 exceeds the 1e-17 tolerance",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "abs(float(kmax) - 4.44605e-13) < 1e-17",
+     "replace": "abs(float(kmax) - 4.44615e-13) < 1e-17",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "e352-09",
+   "replay": "e352",
+   "cls": "D",
+   "desc": "stated discriminant value -453/25088 -> -454/25088",
+   "why": "the computed value is -453/25088",
+   "edits": [
+    {
+     "file": "replay_calabi.py",
+     "find": "al**2 - 3 * be == Fr(-453, 25088) < 0",
+     "replace": "al**2 - 3 * be == Fr(-454, 25088) < 0",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "ramsey_alphaevolve-01",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "add edge (0,1) to the R(3,12) graph",
+   "why": "vertices 0 and 1 have a common neighbour, so a triangle appears",
+   "graph_edit": {
+    "file": "graphs/R_3_12_ge_53.txt",
+    "set": [
+     [
+      0,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-02",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "add edge (0,1) to the R(3,13) graph",
+   "why": "vertices 0 and 1 have a common neighbour, so a triangle appears",
+   "graph_edit": {
+    "file": "graphs/R_3_13_ge_61.txt",
+    "set": [
+     [
+      0,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-03",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "add edge (0,2) to the R(3,15) graph",
+   "why": "vertices 0 and 2 have a common neighbour, so a triangle appears",
+   "graph_edit": {
+    "file": "graphs/R_3_15_ge_74.txt",
+    "set": [
+     [
+      0,
+      2,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-04",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "add edge (0,3) to the R(4,13) graph",
+   "why": "the common neighbourhood of vertices 0 and 3 contains an edge, so a K4 appears",
+   "graph_edit": {
+    "file": "graphs/R_4_13_ge_139.txt",
+    "set": [
+     [
+      0,
+      3,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-05",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "add edge (0,1) to the R(4,14) graph",
+   "why": "the common neighbourhood of vertices 0 and 1 contains an edge, so a K4 appears",
+   "graph_edit": {
+    "file": "graphs/R_4_14_ge_148.txt",
+    "set": [
+     [
+      0,
+      1,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-06",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "remove edge (0,7) from the R(3,12) graph",
+   "why": "the common non-neighbourhood of 0 and 7 contains an independent set of size 10, so an independent 12-set appears",
+   "graph_edit": {
+    "file": "graphs/R_3_12_ge_53.txt",
+    "set": [
+     [
+      0,
+      7,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "ramsey_alphaevolve-07",
+   "replay": "ramsey_alphaevolve",
+   "cls": "D",
+   "desc": "remove edge (0,6) from the R(3,13) graph",
+   "why": "the common non-neighbourhood of 0 and 6 contains an independent set of size 11, so an independent 13-set appears",
+   "graph_edit": {
+    "file": "graphs/R_3_13_ge_61.txt",
+    "set": [
+     [
+      0,
+      6,
+      0
+     ]
+    ]
+   }
+  }
+ ]
+}
