@@ -4,7 +4,7 @@
   python selfaudit/run_selfaudit.py              # run every mutant, write selfaudit/RESULT.md and selfaudit/results.json
   python selfaudit/run_selfaudit.py --only e153  # restrict to replays whose name contains the text
   python selfaudit/run_selfaudit.py -j 6         # mutants run in parallel (default 8)
-  python selfaudit/run_selfaudit.py --strict     # exit 1 if any non-equivalent mutant survives
+  python selfaudit/run_selfaudit.py --strict     # exit 1 if any survivor has no written classification (equivalent or mis-specified)
 
 Each mutant is applied to a temporary copy of its replay directory; the working tree is never modified.
 The mutated replay is run with its normal arguments (e101: --quick, ramsey_alphaevolve: --cheap) and its stdout is compared
