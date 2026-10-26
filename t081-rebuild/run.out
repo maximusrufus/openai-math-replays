@@ -1,0 +1,28 @@
+zeromargin.py sha256 640fe453c1a32f4aa580ca2b1261c6406923a4d7c131f65604a432c7fc2086ab (= pinned)
+sha256 6294052a37ce66c5d84b55afd606e3a52f463e22b876bf44b5aa903aefb7e737  qx2_zm.py
+sha256 1fd203469bb43a55ca7ce376b9717437e0970eead31941ec7fa100ab24d5ba95  zm_mixed.py
+sha256 640fe453c1a32f4aa580ca2b1261c6406923a4d7c131f65604a432c7fc2086ab  zeromargin.py
+sha256 bb89de15ecf5821dd7e1a36ebab8a50d792a406b7fb0f5cb38059f99ef74aae5  mixed_cover.py
+sha256 4151d7c4059d5dcf56130c9373e6b5b60635e1a4250f46562d7ecc4d64a27801  input
+argv: certificates/k2m4/qx2_zm/checker/qx2_zm.py certificates/k2m4/K4_k008_box9.txt --depth 18 --nproc 20 --exact-umax 1/2 --exact-from 3 --progress 1000 --resume run.jsonl --dump-leaves
+container [0,9]^2, 0 points, 2076 segments on 80 lines, Lebesgue square [14/5,31/5]^2; total 3835229774429/50000000000 = 76.704595488580
+D4 roots [0,m/2]^2 x u in [0,1/2]: 16200 roots; depth 18; EXACT on for u1 <= 1/2
+  1000/16200 roots, 1000 boxes, uncert 0, 0s
+  2000/16200 roots, 2018 boxes, uncert 0, 2s
+  3000/16200 roots, 4994 boxes, uncert 0, 316s
+  4000/16200 roots, 6174 boxes, uncert 0, 335s
+  5000/16200 roots, 9120 boxes, uncert 0, 597s
+  6000/16200 roots, 17194 boxes, uncert 0, 7175s
+  7000/16200 roots, 21552 boxes, uncert 0, 8870s
+  8000/16200 roots, 24936 boxes, uncert 0, 9424s
+  9000/16200 roots, 82014 boxes, uncert 0, 19789s
+  10000/16200 roots, 127850 boxes, uncert 0, 31600s
+  11000/16200 roots, 146474 boxes, uncert 0, 37749s
+  12000/16200 roots, 169068 boxes, uncert 0, 46282s
+  13000/16200 roots, 181674 boxes, uncert 0, 52398s
+  14000/16200 roots, 191366 boxes, uncert 0, 56863s
+  15000/16200 roots, 199230 boxes, uncert 0, 61348s
+  16000/16200 roots, 210340 boxes, uncert 0, 65057s
+done in 66832s: boxes 214336, max depth 17, CPU 1328518 s
+  leaves: LEB 683  CAP 393  EXACT 20577  EXACT0 1424  EXACT45 1392  AXIS 81  SYM 2676  PIECE 84152  ADM 0  P1 0  MIX 0  SPLIT 0  EMPTY 3890  UNCERT 0
+VERIFIED-D4 (u > 0; u = 0 face: qx2_zm.py axis)

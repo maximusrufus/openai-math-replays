@@ -1,0 +1,8 @@
+Full replay of the box-9 run of evand/square-packing at 2eb15455a6f178213287a84ab4d0576c060baabe (s(k^2-4) = k, ValidTilt9 region), Linux (WSL Ubuntu), 32 logical cores, Python 3.14.4.
+Command (from s12/): python certificates/k2m4/qx2_zm/checker/qx2_zm.py certificates/k2m4/K4_k008_box9.txt --depth 18 --nproc 20 --exact-umax 1/2 --exact-from 3 --progress 1000 --resume run.jsonl --dump-leaves
+Input K4_k008_box9.txt sha256 4151d7c4059d5dcf56130c9373e6b5b60635e1a4250f46562d7ecc4d64a27801; qx2_zm.py sha256 6294052a37ce66c5d84b55afd606e3a52f463e22b876bf44b5aa903aefb7e737 (as in the run header).
+Result: exit 0; VERIFIED-D4; 16200/16200 roots, uncert 0; leaves 115268 (LEB 683, CAP 393, EXACT 20577, EXACT0 1424, EXACT45 1392, AXIS 81, SYM 2676, PIECE 84152, EMPTY 3890); boxes 214336; max depth 17.
+Time: wall 66832 s, CPU 1328518 s (time.txt). The submitter's published run reports 815343 CPU-s for the same work; the box, leaf and root counts match exactly.
+Record check: the per-root records equal the submitter's published run_k4x_k008_leaves.jsonl.gz (record_compare.txt).
+run.jsonl.gz is the run record; the only edit is a local directory removed from the header argv. The original run.out has sha256 56f0fab113d5848c36736550757ad31844a1440ca0a5b7738364f6a65740ec1b; the copy here differs only in line 7 (a local directory removed from the --resume path).
+This replay executes the submitter's code (qx2_zm.py). It shows the run reproduces on a second machine; it is not an independent reimplementation.

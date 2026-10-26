@@ -1,0 +1,3 @@
+per-root records: submitter's published run_k4x_k008_leaves.jsonl.gz vs this replay (cpu seconds excluded)
+roots published=16200 replay=16200 same root set=True
+roots with different leaf statistics=0, with different other fields=0
